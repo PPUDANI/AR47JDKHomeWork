@@ -18,7 +18,7 @@ int main()
     // 연산자의 종류는 아래와 같이 나뉜다.
     // 1. 단항 연산자 : 메모리 영역이 한 개만 필요한 연산자 (ex. +, -, ++, --, &, *, ^)
     // 2. 이항 연산자 : 메모리 영역이 두 개만 필요한 연산자 (ex. =, +, -. *, /, %, +=, -=, *=, /=, &&, || .etc)
-    // 3. 삼항 연산자 : 메모리 영역이 세 개만 필요한 연산자 (ex. ? A:B 맞나..)
+    // 3. 삼항 연산자 : 메모리 영역이 세 개만 필요한 연산자 (ex. 조건연산자 ()? A:B)
     
     // RAM에서 CPU에게 'Left'와 '+' 연산자와 'Right'을 전달해준다.
     // CPU는 해당 프로세스를 연산하여 결과값을 RAM에게 리턴해준다. 
@@ -33,15 +33,13 @@ int main()
     Result = Left++;
     Result = Left--;
 
-    // 2. 이항연산자
 
+    // 2. 이항연산자
     // 산술연산자
     Result = Left + Right;
     Result = Left - Right;
     Result = Left * Right;
     Result = Left / Right;
-
-
 
     // 연산자 순서도 고려해야한다. (기본적인 사칙연산은 *, / 가 먼저 연산되고 +, - 가 연산된다.)
     Result = 1 + 2 * 3;
@@ -57,25 +55,24 @@ int main()
 
     // 비교연산자
     // 비교한 값은 참과 거짓으로 나뉨.
-    bResult = Left == Right;
-    bResult = Left != Right;
-    bResult = Left < Right;
-    bResult = Left > Right;
-    bResult = Left <= Right;
-    bResult = Left >= Right;
+    bResult = Left == Right;  // same?
+    bResult = Left != Right;  // not same?
+    bResult = Left < Right;   // bigger?
+    bResult = Left > Right;   // saller?
+    bResult = Left <= Right;  // bigger or same?
+    bResult = Left >= Right;  // smaller or same?
 
     // 논리연산자.
     // AND
-    bResult = true && true; // true
-    bResult = true && false; // false
+    bResult = true && true;   // true
+    bResult = true && false;  // false
     bResult = false && false; // false
 
     // OR
-    bResult = true || true; // true
-    bResult = true || false; // true
+    bResult = true || true;   // true
+    bResult = true || false;  // true
     bResult = false || false; // false
 
-    bResult = !true;
-
-
+    // NOT
+    bResult = !true; 
 }
