@@ -1,6 +1,4 @@
 ﻿
-#include <iostream>
-
 int main()
 {
     int PlayerAtt;
