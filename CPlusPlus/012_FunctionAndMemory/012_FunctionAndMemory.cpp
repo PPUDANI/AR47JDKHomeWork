@@ -17,7 +17,7 @@ void Function()
 }
 
 
-// main scope
+// main scope(범위), 메인 실행흐름
 int main()
 {
 // 함수의 시작
@@ -27,7 +27,7 @@ int main()
     // 실행 흐름의 시작과 끝을표현하는 기호. '{', '}'
     // 이름이 있는 실행흐름 안에서만 만들 수 있다.
 
-    //Unname scope
+    //Unname scope(범위) , 이름없는 실행흐름, 
     {
         int Value = 100; // 지역변수라 하며 해당 실행흐름 밖에선 쓸 수 없다.
     }
