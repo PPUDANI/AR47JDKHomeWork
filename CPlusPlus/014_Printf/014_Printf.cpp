@@ -3,5 +3,6 @@
 
 int main()
 {
-    printf_s("Hello World!");
+    printf_s("Test");
+
 }
