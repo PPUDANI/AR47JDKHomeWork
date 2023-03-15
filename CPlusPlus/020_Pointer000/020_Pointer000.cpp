@@ -47,9 +47,9 @@ int main()
         // 주소값은 byte로 센다.(당연)
     }
     {
-        int ValueBinary = 0b00000000000000000000000000000000;
-        int ValueX = 0xffffffffffffffff;
-
+        int Value2 = 0b00000000000000000000000000000000; // Binary (2진수)
+        int Value16 = 0xffffffffffffffff;  // Hexadecimal (16진수)
+        int Value10 = 1; // Decimal (10진수)
         // 0b00000000000000000000000000000000
         // 0x   f   f   f   f   f   f   f   f (ffffffff)
 
