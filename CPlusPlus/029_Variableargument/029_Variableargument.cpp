@@ -11,7 +11,8 @@ void TestFunction1(int _1, int _2, int _3)
     int* ptr = &_1; 
     
 }
-void TestFunction2(int _1, ...)
+
+void TestFunction2(int _1, ...) // 숙제
 {
     int* Ptr = &_1;
     int count = 1;
