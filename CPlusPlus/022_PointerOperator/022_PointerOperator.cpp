@@ -5,6 +5,21 @@ void ValueChange(int* Ptr)
 {
     *Ptr = 0;
 }
+
+void Hit_Damage(int* Ptr)
+{
+    if ( *Ptr == 0 ) 
+    {
+        return;
+    }
+    else 
+    {
+        *Ptr -= 200;
+    }
+    
+}
+
+
 int main()
 {
     {
@@ -37,5 +52,14 @@ int main()
         // 몬스터가 데미지를 받을 땐 단순히 변수에 -를 하는것이 아니라 함수를 사용한다.
         // 이때 함수를 사용할 때 지역변수값을 함수가 바꿀 수 없으니 포인터를 사용한다.
 
+        int PlayerHp = 1000;
+        int* PlayerHpPtr = &PlayerHp;
+
+        Hit_Damage(PlayerHpPtr); // 800
+        Hit_Damage(PlayerHpPtr); // 600
+        Hit_Damage(PlayerHpPtr); // 400
+        Hit_Damage(PlayerHpPtr); // 200
+        Hit_Damage(PlayerHpPtr); //   0
+        Hit_Damage(PlayerHpPtr); //   0
     }
 }
