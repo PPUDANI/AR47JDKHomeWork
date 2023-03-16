@@ -15,7 +15,7 @@ int main()
         --Value;
         printf_s("실행코드");
     }
-
+     
     Value = 10;
     do
     {
