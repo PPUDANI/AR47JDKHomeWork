@@ -25,7 +25,8 @@ int main()
     if (ReturnValue()) 
         printf_s("으아앙");
 
-    // else if, \\\else
+    // else if : 위에 조건이 만족하지 않으면 
+    // else : 모든 조건이 만족하지 않을 때
     if (Value == 1)
     {
         printf_s("으아앙");
@@ -44,4 +45,8 @@ int main()
     }
 
 
+    if (ReturnValue(), 0) // 코드가 실행되긴 하는데 맨 오른쪽 코드를 사용함.
+    {
+        printf_s("asd");
+    }
 }
