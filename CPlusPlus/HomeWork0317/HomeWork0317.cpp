@@ -1,4 +1,4 @@
-
+﻿
 #include <iostream>
 
 // 문자열을 넣어주면 글자 개수를 알아냅니다.
@@ -7,7 +7,7 @@
 int StringCount(const char* _String)
 {
 	int count = 0;
-	while ( '\0' != _String[count] )
+	while ('\0' != _String[count])
 	{
 		count++;
 	}
@@ -18,9 +18,9 @@ int StringCount(const char* _String)
 int TrimDelete(char* _String)
 {
 	int count = 0;
-	while ( 0 != _String[count] )
+	while (0 != _String[count])
 	{
-		if (' ' != _String[count] )
+		if (' ' != _String[count])
 		{
 			putchar(_String[count]);
 		}
@@ -87,7 +87,7 @@ int main()
 	TrimDelete(Arr2);
 
 	int RValue0 = StringToInt("12624254");
-	printf_s("\nRValue : %d\n",RValue0);
+	printf_s("\nRValue : %d\n", RValue0);
 
 	RValue0 = StringToInt2("12624254");
 	printf_s("\nRValue : %d\n", RValue0);
