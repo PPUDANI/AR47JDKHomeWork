@@ -30,20 +30,8 @@ int TrimDelete(char* _String)
 	return 0;
 }
 
-// 
-int StringToInt2(const char* _String)
-{
-	int count = 0;
-	int length = StringCount(_String);
-	int Value = 0;
-	while (count < length) {
-		int num = _String[count] - 48;
-		Value = (Value + num) * 10;
-		count++;
-	}
-	return Value / 10;
-}
 
+// 문자열을 정수형으로 형변환해주는 함수 (중첩 while)
 int StringToInt(const char* _String)
 {
 	int num = StringCount(_String);
@@ -63,6 +51,20 @@ int StringToInt(const char* _String)
 		count++;
 	}
 	return Value;
+}
+
+// 문자열을 정수형으로 형변환해주는 함수 (중첩 while X)
+int StringToInt2(const char* _String)
+{
+	int count = 0;
+	int length = StringCount(_String);
+	int Value = 0;
+	while (count < length) {
+		int num = _String[count] - 48;
+		Value = (Value + num) * 10;
+		count++;
+	}
+	return Value / 10;
 }
 
 int main()
