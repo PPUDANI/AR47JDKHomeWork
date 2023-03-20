@@ -31,6 +31,7 @@ inline int MyPrintf(const char* const _Value, ...)
 			switch (Format)
 			{
 			case 'd':
+				int* ValuePtr = (int*)Address;
 
 				break;
 			case 's':
@@ -46,8 +47,20 @@ inline int MyPrintf(const char* const _Value, ...)
 	}
 	return 0;
 }
+void Test(int _1, int, int)
+{
+	__int64 Address = (__int64) & _1;
+
+	Address += 8;
+	int* _2 = (int*)Address;\
+
+	Address += 8;
+	int* _3 = (int*)Address;
+	
+}
 int main()
 {
+	Test(10, 20, 30);
 	MyPrintf("abcdefg %d", 1);
 }
 
