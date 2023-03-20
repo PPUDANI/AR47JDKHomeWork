@@ -3,50 +3,40 @@
 
 inline int MyPrintf(const char* const _Value, ...)
 {
-	//const char* Ptr = _Value;
-	//int Value1 = Ptr[2];
-
 	__int64 Address = (__int64)&_Value;
-	char* Ptr = (char*)Address;
-	Ptr += 8;
-	int* IntPtr = (int*)Ptr;
-	int Value0 = *IntPtr;
-
-	return 0;
-
-	int Count = 0;
-	while (0 != _Value[Count])
+	int count = 0;
+	while ('\0' != _Value[count])
 	{
-		char Value = _Value[Count];
-		
-
-		if ('%' != Value)
+		if (_Value[count] == '%')
 		{
-			putchar(Value);
-		}
-		else
-		{
-			
-			char Format = _Value[Count + 1];
-			switch (Format)
+			Address += 8;
+			switch (_Value[++count])
 			{
+
 			case 'd':
-				int* ValuePtr = (int*)Address;
-
-				break;
-			case 's':
-
-				break;
-			default:
+			{
+				int* DecAddress = (int*)Address;
+				printf_s("%d", *DecAddress);
 
 				break;
 			}
-			
+			case 's':
+				break;
+
+			default:
+				break;
+			}
 		}
-		Count++;
+		else
+		{
+			putchar(_Value[count]);
+		}
+
+		count++;
 	}
 	return 0;
 }
+
 void Test(int _1, int, int)
 {
 	__int64 Address = (__int64) & _1;
@@ -60,7 +50,7 @@ void Test(int _1, int, int)
 }
 int main()
 {
-	Test(10, 20, 30);
-	MyPrintf("abcdefg %d", 1);
+	// Test(10, 20, 30);
+	MyPrintf("Decimal : %d, %d, %d, %d, %d\n", 1, 5, 4, 6, 2);
 }
 
