@@ -42,7 +42,7 @@ void Test(int _1, int, int)
 	__int64 Address = (__int64) & _1;
 
 	Address += 8;
-	int* _2 = (int*)Address;\
+	int* _2 = (int*)Address;
 
 	Address += 8;
 	int* _3 = (int*)Address;
