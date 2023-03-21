@@ -2,26 +2,25 @@
 #include <iostream>
 #include <conio.h>
 
-void Damage(
-    const char* AttName,
-    const char* const DefName,
-    const int& Att,
-    int& Hp)
-{
-    printf_s("%s가 %s에게 공격을 시작합니다.\n", AttName, DefName);
-    printf_s("%s가 %d의 데미지를 입었습니다.\n", DefName, Att);
-    Hp -= Att;
-}
-
-void StatusRender(const char* const name,
-    const int& Att,
-    const int& Hp)
+void StatusRender ( const char* const name, const int& Att, const int& Hp )
 {
     printf_s("%s의 Status -----\n", name);
     printf_s("    Hp : %d\n", Hp);
     printf_s("   Att : %d\n", Att);
     printf_s("-----------------\n");
 }
+
+void Damage(int& Att, int& Hp)
+{
+    Hp -= Att;
+}
+
+void DamageLog(const char* const AttName, const char* const DefName, int& Att)
+{
+    printf_s("%s가 공격을 시작합니다\n", AttName);
+    printf_s("%s가 %d의 데미지를 입었습니다.\n", DefName, Att);
+}
+
 int main()
 {
     int PlayerHp = 100;
@@ -31,27 +30,41 @@ int main()
 
     while (true)
     {
-        if (PlayerHp < 0)
+
+        system("cls");
+        StatusRender("Player", PlayerAtt, PlayerHp);
+        StatusRender("Monster", MonsterAtt, MonsterHp);
+
+        _getch();
+
+        system("cls");
+        Damage(PlayerAtt, MonsterHp);
+        StatusRender("Player", PlayerAtt, PlayerHp);
+        StatusRender("Monster", MonsterAtt, MonsterHp);
+        DamageLog("Player", "Monster", PlayerAtt);
+        
+        _getch();
+
+        system("cls");
+        Damage(MonsterAtt, PlayerHp);
+        StatusRender("Player", PlayerAtt, PlayerHp);
+        StatusRender("Monster", MonsterAtt, MonsterHp);
+        DamageLog("Player", "Monster", PlayerAtt);
+        DamageLog("Monster", "Player", MonsterAtt);
+
+        _getch();
+
+        if (PlayerHp <= 0)
         {
             printf_s("Player의 승리입니다.");
             break;
         }
-        else if (MonsterHp < 0)
+        else if (MonsterHp <= 0)
         {
             printf_s("Monster의 승리입니다.");
             break;
         }
-
-        system("cls"); // 콘솔화면을 지운다.
-
-        StatusRender("Player", PlayerAtt, PlayerHp);
-        StatusRender("Monster", MonsterAtt, MonsterHp);
-
-        Damage("Player", "Monster", PlayerAtt, MonsterHp);
-        Damage("Monster", "Player", MonsterAtt, PlayerHp);
-        _getch();
-
-
     }
+
     return 0;
 }

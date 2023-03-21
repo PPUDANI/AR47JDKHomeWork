@@ -24,6 +24,7 @@
     <ProjectGuid>{7d95c07b-a551-4e3d-be80-b8c26cc6b01b}</ProjectGuid>
     <RootNamespace>My038BreakAndContinue</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>039_BreakAndContinue</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

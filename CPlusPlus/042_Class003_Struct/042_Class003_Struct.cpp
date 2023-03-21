@@ -10,6 +10,7 @@ class Player
     int Hp = 100;
     int Speed = 3;
 };
+
 struct Monster
 {
     // default 접근제한 지정자  : public
