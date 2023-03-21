@@ -24,10 +24,12 @@ int main()
     //    count++;
     //}
 
-    for (int i = printinit(); i < 10; i++)
+    for ( int i = printinit(); i < 10; i++ )
     {
         count++;
     }
 
     std::cout << count;
+
+
 }
