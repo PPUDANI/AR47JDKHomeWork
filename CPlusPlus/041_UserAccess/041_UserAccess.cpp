@@ -15,11 +15,8 @@ protected: //        공개      공개     비공개
     
 private: //          공개     비공개    비공개
 
-    void StatuRender()
-    {
-        printf_s("공격 : %d");
-    }
 };
+
 class Monster
 {
     // default 접근제한 지정자는 private 이다.
@@ -27,11 +24,19 @@ class Monster
     int Def = 2;
     int Hp = 100;
     int Speed = 3;
+public:
+
+    int SetHp ()
+    {
+        Hp -= Att;
+    }
 };
+
 // 클래스 외부
 int main()
 {
-    Player NewPlayer = Player();
+    Monster slime;
 
-    NewPlayer.Hp = 30;
+    slime.SetHp();
+
 }
