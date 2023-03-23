@@ -6,50 +6,128 @@
 class Number
 {
 private:
-    int Value = 2;
+    int Value;
 public:
-    Number(int Val) : Value(Val)
-    {
+    Number(int Val) : Value(Val) {}
 
+    // 산술연산자
+    int operator + (int _Value) // +
+    {
+        return Value + _Value;
+    }
+    int operator - (int _Value) // -
+    {
+        return Value - _Value;
+    }
+    int operator * (int _Value) // *
+    {
+        return Value * _Value;
+    }
+    int operator / (int _Value) // /
+    {
+        return Value / _Value;
+    }
+    int operator % (int _Value) // %
+    {
+        return Value % _Value;
     }
 
-    int operator + (int _Value)
+    // 비트단위 연산자
+    int operator ~ () // ~
     {
-        return _Value + Value;
+        return ~Value;
+    }
+    int operator & (int _Value) // AND
+    {
+        return Value & _Value;
+    }
+    int operator | (int _Value) // OR
+    {
+        return Value | _Value;
+    }
+    int operator ^ (int _Value) // XOR
+    {
+        return Value ^ _Value;
+    }
+    int operator >> (int _Value) // >> Shift
+    {
+        return Value >> _Value;
+    }
+    int operator << (int _Value) // >> Shift
+    {
+        return Value << _Value;
     }
 
-    int operator - (int _Value)
+    // 증감 연산자 ('전위'만 구현했고 '후위'는 구현하지 못했음)
+    int operator ++ () // ++Value
     {
-        return _Value - Value;
+        return ++(this->Value); 
+    }
+    int operator -- () // --Value
+    {
+        return --(this->Value);
     }
 
-    int operator * (int _Value)
+
+    // 비교연산자
+    bool operator == (int _Value) // ==
     {
-        return _Value * Value;
+        return  Value == _Value;
     }
-
-    int operator / (int _Value)
+    bool operator != (int _Value) // !=
     {
-        return _Value / Value;
+        return Value != _Value;
     }
-
-    int operator % (int _Value)
+    bool operator < (int _Value) // <
     {
-        return _Value % Value;
+        return Value < _Value;
     }
-
-    int operator [] (size_t Val)
+    bool operator > (int _Value) // >
     {
-
+        return Value > _Value;
+    }
+    bool operator <= (int _Value) // <=
+    {
+        return Value <= _Value;
+    }
+    bool operator >= (int _Value) // >=
+    {
+        return Value >= _Value;
     }
 };
 int main()
 {
-    {
-        Number Value = 10;
+    Number Object = 2;
 
-        Value + 10;
-        Value.operator+(10); // operator 연산자 겹지정 함수라 부른다.
-        Value[30];
-    }
+    Object + 10; // 12
+    Object - 10; // -8
+    Object * 10; // 20
+    Object / 10; // 0
+    Object % 10; // 2
+
+    
+    ~Object; // 0010 -> 1101 : -3
+
+             //  [-3인지 확인 과정]   1101
+             //  [2의 보수 제거]      1100 (1101 - 1) 
+             //  [1의 보수 제거]      0011 (1100 -> 0011) = '3'
+
+    Object & 1;  // 0010 AND 0001 = 0000(0)
+    Object | 1;  // 0010 OR  0001 = 0011(3)
+    Object ^ 1;  // 0010 XOR 0001 = 0011(3)
+    Object << 1; //         0010 -> 0100(4)
+    Object >> 1; //         0010 -> 0001(1)
+
+
+    ++Object; // 3 실제 값 변경
+    --Object; // 2 실제 값 변경
+
+    Object == 10;  // false
+    Object != 10;  // true
+    Object < 10;   // true
+    Object > 10;   // false
+    Object <= 10;  // true
+    Object >= 10;  // false
+
+    int a = 0;
 }
