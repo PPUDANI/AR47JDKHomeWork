@@ -7,6 +7,7 @@
 // Player라는 객체가 생성되면 int Hp라는 것을 가지고 있어야 한다는 의미
 class Player
 {
+public:
     int Hp;
 };
 
@@ -69,4 +70,10 @@ int main()
     Item NewItem;
     AProgram::Item NewItemA;
     BProgram::Use::Item NewItemB;
+
+    Player P1;
+    P1.Hp = 0; //
+    P1.Player::Hp = 1; // 위와 같은 거지만 생략이 가능하다.
+    int a = 0;
 }
+

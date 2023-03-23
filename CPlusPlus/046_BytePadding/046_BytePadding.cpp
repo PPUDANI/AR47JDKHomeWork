@@ -35,7 +35,7 @@ int main()
     int* PtrAtt = (int*)(AddressHp + intsize * 2); // + 8
     short* PtrDef = (short*)(AddressHp + intsize * 3); // + 12
 
-    // 결과적으로 패딩된 공간에 처음 주소에 저장이 된다.
+    // 결과적으로 패딩된 공간에 처음 주소부터 차례대로 저장이 된다.
     printf_s("  Hp : %d\n", *PtrHp);
     printf_s("  Mp : %d\n", *PtrMP);
     printf_s(" Att : %d\n", *PtrAtt);
