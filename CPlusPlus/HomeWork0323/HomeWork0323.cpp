@@ -59,13 +59,13 @@ public:
     }
 
     // 증감 연산자 ('전위'만 구현했고 '후위'는 구현하지 못했음)
-    int operator ++ () // ++Value
+    void operator ++ () // ++Value
     {
-        return ++(this->Value); 
+        ++(this->Value); 
     }
-    int operator -- () // --Value
+    void operator -- () // --Value
     {
-        return --(this->Value);
+        --(this->Value);
     }
 
 
