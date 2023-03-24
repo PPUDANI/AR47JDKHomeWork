@@ -59,15 +59,29 @@ public:
     }
 
     // 증감 연산자 ('전위'만 구현했고 '후위'는 구현하지 못했음)
-    void operator ++ () // ++Value
+    Number& operator ++ () // ++Value
     {
-        ++(this->Value); 
+        ++Value;
+        return *this;
     }
-    void operator -- () // --Value
+    Number& operator -- () // --Value
     {
-        --(this->Value);
+        --Value;
+        return *this;
     }
 
+    Number& operator ++(int) // ++을 뒤에 써야하니까 인자가 필요하지만 이것은 인자가 필요한 연산자가 아니기 때문에 쓸 수 없는 인자를 넣어준다.
+    {
+        Number Obj = Value;
+        ++Value; // Value는 ++해주고 이전값을 리턴한다.
+        return Obj;
+    }
+    Number& operator --(int)
+    {
+        Number Obj = Value;
+        --Value;
+        return Obj;
+    }
 
     // 비교연산자
     bool operator == (int _Value) // ==

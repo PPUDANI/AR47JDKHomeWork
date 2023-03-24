@@ -33,8 +33,11 @@ int main()
     // 자신이 논리적으로 이 연산자를 이렇게 만들면 되겠다 할 수 있는 함수 다만들기
     {
         Number Value{10, 20};
+
+        // 같다.
         Value + 10;
-        Value + 10;
-        Value + 10;
+        Value.operator+(10);
+
+
     }
 }
