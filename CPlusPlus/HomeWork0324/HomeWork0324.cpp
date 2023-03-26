@@ -397,7 +397,7 @@ int main()
 			printf_s("\n  [ G ]: 장애물 설치  [ F ]: 폭탄 설치              폭발 위치 제어 배열\n");
 			break;
 		}
-		printf_s("\n                                                   [ M ]: 개발자 모드(%d)\n      ",ChangeWindow);
+		printf_s("\n                                                    [ M ]: 개발 모드(%d)\n      ",ChangeWindow);
 
 		// 폭탄 정보 출력 화면
 		for (short i = 0; i < MaxBombNum; i++)
