@@ -92,7 +92,7 @@ int main()
 	// 화면 변환
 	short ChangeWindow = 0;
 
-	const short MaxBombNum = 6; // 폭탄 설치 개수
+	const short MaxBombNum = 5; // 폭탄 설치 개수
 	short BombNumCount = 0; // 설치된 폭탄 개수
 	const short TimeOfBomb = 20; // 폭탄의 시간
 	short BombTimerArr[MaxBombNum] = { 0, }; // 폭탄마다 시간 저장
@@ -397,7 +397,7 @@ int main()
 			printf_s("\n  [ G ]: 장애물 설치  [ F ]: 폭탄 설치              폭발 위치 제어 배열\n");
 			break;
 		}
-		printf_s("\n                                                    [ M ]: 개발 모드(%d)\n      ",ChangeWindow);
+		printf_s("\n                                                    [ M ]: 개발 모드(%d)\n        ",ChangeWindow);
 
 		// 폭탄 정보 출력 화면
 		for (short i = 0; i < MaxBombNum; i++)
