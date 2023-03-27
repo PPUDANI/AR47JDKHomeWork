@@ -325,7 +325,7 @@ int main()
 						break;
 
 					case WallIconNum:
-						printf_s("■");
+						printf_s("a");
 						break;
 
 					case InstallWallIconNum:
