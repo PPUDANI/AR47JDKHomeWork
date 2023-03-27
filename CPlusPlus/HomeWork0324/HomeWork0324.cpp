@@ -94,7 +94,7 @@ int main()
 
 	const short MaxBombNum = 5; // 폭탄 설치 개수
 	short BombNumCount = 0; // 설치된 폭탄 개수
-	const short TimeOfBomb = 20; // 폭탄의 시간
+	const short TimeOfBomb = 30; // 폭탄의 시간
 	short BombTimerArr[MaxBombNum] = { 0, }; // 폭탄마다 시간 저장
 	const short BombAnimCount = 1; // 폭탄 애니메이션 주기값
 
