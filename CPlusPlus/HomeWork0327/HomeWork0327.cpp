@@ -74,7 +74,7 @@ public:
 	}
 
 	// 이녀석을 무조건 사용해서 플레이어가 바깥으로 못나가게 만드세요.
-	bool IsScreenOver(const int2& _Pos)
+	bool IsScreenOver(const int2& _Pos) const
 	{
 		if (0 > _Pos.X)
 		{
@@ -133,7 +133,7 @@ public:
 	}
 
 	// 화면바깥으로 못나가게 하세요. 
-	void Input(ConsoleGameScreen& _Screen)
+	void Input(const ConsoleGameScreen& _Screen)
 	{
 		if (0 == _kbhit())
 		{
@@ -151,7 +151,7 @@ public:
 		case 'a':
 		case 'A':
 			Pos.X -= 1;
-			if (true == _Screen.IsScreenOver(GetPos()))
+			if (true == _Screen.IsScreenOver(Pos))
 			{
 				Pos.X += 1;
 				break;
@@ -163,7 +163,7 @@ public:
 		case 'D':
 
 			Pos.X += 1;
-			if (true == _Screen.IsScreenOver(GetPos()))
+			if (true == _Screen.IsScreenOver(Pos))
 			{
 				Pos.X -= 1;
 				break;
@@ -174,7 +174,7 @@ public:
 		case 'W':
 
 			Pos.Y -= 1;
-			if (true == _Screen.IsScreenOver(GetPos()))
+			if (true == _Screen.IsScreenOver(Pos))
 			{
 				Pos.Y += 1;
 				break;
@@ -185,7 +185,7 @@ public:
 		case 'S':
 
 			Pos.Y += 1;
-			if (true == _Screen.IsScreenOver(GetPos()))
+			if (true == _Screen.IsScreenOver(Pos))
 			{
 				Pos.Y -= 1;
 				break;
