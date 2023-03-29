@@ -1,81 +1,38 @@
 #pragma once
 
-#include<iostream>
 #include "ConsoleGameMath.h"
-ConsoleGameScreen::ConsoleGameScreen()
+
+// 이게 1단계
+// 근본오브 근본 수학 물리 
+class ConsoleGameScreen
 {
 
-}
+public:
 
+	// 메모리 영역 자체가 달라졌다고 봐야합니다.
+	// 클래스 내부에 전역변수를 선언할수가 있습니다.
+	static const int ScreenYSize = 10;
+	static const int ScreenXSize = 20;
 
-static ConsoleGameScreen& ConsoleGameScreen::GetMainScreen()
-{
-	return MainScreen;
-}
-
-
-static int2 ConsoleGameScreen::GetScreenSize()
-{
-	return int2{ ScreenXSize, ScreenYSize };
-}
-
-
-void ConsoleGameScreen::ScreenClear()
-{
-	for (size_t y = 0; y < ScreenYSize; y++)
+	inline static ConsoleGameScreen& GetMainScreen()
 	{
-		for (size_t x = 0; x < ScreenXSize; x++)
-		{
-			Arr[y][x] = 'a';
-		}
+		return MainScreen;
 	}
-}
+	static int2 GetScreenSize();
 
-void ConsoleGameScreen::ScreenPrint() const
-{
-	for (size_t y = 0; y < ScreenYSize; y++)
-	{
-		for (size_t x = 0; x < ScreenXSize; x++)
-		{
-			// Arr[y][x] = 'b';
-			printf_s("%c", Arr[y][x]);
-		}
-		printf_s("\n");
-	}
-}
+	void ScreenClear();
 
-// 이녀석을 무조건 사용해서 플레이어가 바깥으로 못나가게 만드세요.
-bool ConsoleGameScreen::IsScreenOver(const int2& _Pos) const
-{
-	if (0 > _Pos.X)
-	{
-		return true;
-	}
+	void ScreenPrint() const;
 
-	if (0 > _Pos.Y)
-	{
-		return true;
-	}
+	bool IsScreenOver(const int2& _Pos) const;
 
-	if (ScreenXSize <= _Pos.X)
-	{
-		return true;
-	}
+	void SetScreenCharacter(const int2& _Pos, char _Ch);
 
-	if (ScreenYSize <= _Pos.Y)
-	{
-		return true;
-	}
+	void SetScreenBullet(int2& _Pos, char _Ch);
+private:
+	char Arr[ScreenYSize][ScreenXSize] = { 0, };
 
-	return false;
-}
+	ConsoleGameScreen();
 
-void ConsoleGameScreen::SetScreenCharacter(const int2& _Pos, char _Ch)
-{
-	if (true == IsScreenOver(_Pos))
-	{
-		return;
-	}
-
-	Arr[_Pos.Y][_Pos.X] = _Ch;
-}
+	static ConsoleGameScreen MainScreen;
+};

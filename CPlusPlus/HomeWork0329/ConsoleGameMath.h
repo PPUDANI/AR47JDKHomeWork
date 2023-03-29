@@ -1,12 +1,25 @@
 #pragma once
 
-int2 int2::Half()
+class int2
 {
-	return { X / 2, Y / 2 };
-}
+public:
+	int X = 0;
+	int Y = 0;
 
-int2::int2(int _X, int _Y)
-	: X(_X), Y(_Y)
-{
+public:
+	inline int2 Half()
+	{
+		return { X / 2, Y / 2 };
+	}
 
-}
+public:
+	inline int2() 
+	{
+	}
+
+	inline int2(int _X, int _Y)
+		: X(_X), Y(_Y)
+	{
+
+	}
+};
