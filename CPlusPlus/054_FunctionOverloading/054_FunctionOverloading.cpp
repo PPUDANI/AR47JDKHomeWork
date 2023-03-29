@@ -21,10 +21,32 @@ void Function(short _Value)
 {
     printf_s("void Function(short _Value)\n");
 }
+// 전역함수 이외에도 함수라면 전부 가능하다.
 
+class Player
+{
+public:
+    Player()
+    {
+
+    }
+    Player(int Value)
+    {
+
+    }
+    Player(short Value)
+    {
+
+    }
+
+};
 int main()
 {
     Function();
     Function(10);
     Function((short)10);
+
+    Player NewPlayer0();
+    Player NewPlayer1(10);
+    Player NewPlayer2((short)10);
 }
