@@ -18,11 +18,8 @@ int main()
 		ConsoleGameScreen::GetMainScreen().ScreenClear();
 
 		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewPlayer.GetPos(), '*');
-		if (Bullet::IsBulletFired() == true)
-		{
-			ConsoleGameScreen::GetMainScreen().SetScreenBullet(Bullet::GetPos(), '^');
-		}
-		
+
+		ConsoleGameScreen::GetMainScreen().SetScreenBullet(Bullet::GetPos(), '^');
 
 		ConsoleGameScreen::GetMainScreen().ScreenPrint();
 		

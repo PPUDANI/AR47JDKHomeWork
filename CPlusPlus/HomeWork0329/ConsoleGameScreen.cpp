@@ -70,8 +70,8 @@ void ConsoleGameScreen::SetScreenCharacter(const int2& _Pos, char _Ch)
 void ConsoleGameScreen::SetScreenBullet(int2& _Pos, char _Ch)
 {
 	int2 TempPos = _Pos;
-	Arr[_Pos.Y][_Pos.X] = _Ch;
 	--TempPos.Y;
+
 	if (false == IsScreenOver(TempPos))
 	{
 		--_Pos.Y;
@@ -79,6 +79,11 @@ void ConsoleGameScreen::SetScreenBullet(int2& _Pos, char _Ch)
 	else
 	{
 		Bullet::StopBullet();
+	}
+
+	if (Bullet::IsBulletFired() == true)
+	{
+		Arr[_Pos.Y][_Pos.X] = _Ch;
 	}
 }
 
