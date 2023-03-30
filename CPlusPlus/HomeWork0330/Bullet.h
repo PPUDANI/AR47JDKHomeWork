@@ -7,7 +7,7 @@ class ConsoleGameScreen;
 class Bullet
 {
 public:
-	static const int MaxBulletNum = 5;
+	static const int MaxBulletNum = 20;
 	static int BulletCount;
 
 	static Bullet* GetArrBulletLeft()
