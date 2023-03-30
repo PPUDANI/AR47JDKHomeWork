@@ -9,9 +9,9 @@ class Bullet
 public:
 	static const int MaxBulletNum = 100;
 	static int BulletCount;
-	static Bullet* GetArrBullet()
+	static Bullet* GetArrBulletMid()
 	{
-		return ArrBullet;
+		return ArrBulletMid;
 	}
 
 	static void AllRender();
@@ -37,13 +37,13 @@ public:
 		Fire = true;
 	}
 
-	void Update();
+	void UpdateMid();
 	void Render();
 
 protected:
 
 private:
-	static Bullet ArrBullet[Bullet::MaxBulletNum];
+	static Bullet ArrBulletMid[Bullet::MaxBulletNum];
 
 	Bullet();
 

@@ -67,8 +67,13 @@ void Player::Input()
 		Bullet::BulletCount++;
 		if (Bullet::BulletCount <= Bullet::MaxBulletNum)
 		{
-			BulletPtr[Bullet::BulletCount].SetPos(Pos);
-			BulletPtr[Bullet::BulletCount].FireOn();
+			BulletLeftPtr[Bullet::BulletCount].SetPos(Pos);
+			BulletMidPtr[Bullet::BulletCount].SetPos(Pos);
+			BulletRightPtr[Bullet::BulletCount].SetPos(Pos);
+
+			BulletLeftPtr[Bullet::BulletCount].FireOn();
+			BulletMidPtr[Bullet::BulletCount].FireOn();
+			BulletRightPtr[Bullet::BulletCount].FireOn();
 		}
 
 		break;

@@ -7,11 +7,22 @@ class ConsoleGameScreen;
 class Bullet
 {
 public:
-	static const int MaxBulletNum = 100;
+	static const int MaxBulletNum = 5;
 	static int BulletCount;
-	static Bullet* GetArrBullet()
+
+	static Bullet* GetArrBulletLeft()
 	{
-		return ArrBullet;
+		return ArrBulletLeft;
+	}
+
+	static Bullet* GetArrBulletMid()
+	{
+		return ArrBulletMid;
+	}
+
+	static Bullet* GetArrBulletRight()
+	{
+		return ArrBulletRight;
 	}
 
 	static void AllRender();
@@ -37,14 +48,17 @@ public:
 		Fire = true;
 	}
 
-	void Update();
+	void UpdateMid();
+	void UpdateLeft();
+	void UpdateRight();
 	void Render();
 
 protected:
 
 private:
-	static Bullet ArrBullet[Bullet::MaxBulletNum];
-
+	static Bullet ArrBulletLeft[Bullet::MaxBulletNum];
+	static Bullet ArrBulletMid[Bullet::MaxBulletNum];
+	static Bullet ArrBulletRight[Bullet::MaxBulletNum];
 	Bullet();
 
 	bool Fire = false;

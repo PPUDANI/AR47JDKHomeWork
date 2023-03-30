@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include "Player.h"
 
-Bullet Bullet::ArrBullet[Bullet::MaxBulletNum];
+Bullet Bullet::ArrBulletMid[Bullet::MaxBulletNum];
 
 int Bullet::BulletCount = 0;
 
@@ -12,12 +12,12 @@ void Bullet::AllRender()
 {
 	for (size_t i = 0; i < Bullet::MaxBulletNum; i++)
 	{
-		if (false == ArrBullet[i].IsFire())
+		if (false == ArrBulletMid[i].IsFire())
 		{
 			continue;
 		}
 
-		ArrBullet[i].Render();
+		ArrBulletMid[i].Render();
 	}
 }
 
@@ -25,12 +25,12 @@ void Bullet::AllUpdate()
 {
 	for (size_t i = 0; i < Bullet::MaxBulletNum; i++)
 	{
-		if (false == ArrBullet[i].IsFire())
+		if (false == ArrBulletMid[i].IsFire())
 		{
 			continue;
 		}
 
-		ArrBullet[i].Update();
+		ArrBulletMid[i].UpdateMid();
 	}
 }
 
@@ -47,7 +47,7 @@ void Bullet::Render()
 	}
 }
 
-void Bullet::Update()
+void Bullet::UpdateMid()
 {
 	if (true == Fire)
 	{

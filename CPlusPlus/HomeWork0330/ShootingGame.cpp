@@ -15,7 +15,9 @@ void ShootingGame::GameProgress()
 
 	// Bullet ArrBullet[10] = { Bullet (), Bullet (), Bullet (), Bullet (), Bullet (), Bullet (),};
 
-	NewPlayer.SetBulletArr(Bullet::GetArrBullet());
+	NewPlayer.SetBulletMidArr(Bullet::GetArrBulletLeft());
+	NewPlayer.SetBulletLeftArr(Bullet::GetArrBulletMid());
+	NewPlayer.SetBulletRightArr(Bullet::GetArrBulletRight());
 	// Bullet* BulletPtr = ArrBullet;
 	// 이게 되는거야? 이런생각이 들었다면 제발 int를 생각해라 
 	//int NewInt[10];

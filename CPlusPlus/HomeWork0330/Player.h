@@ -22,9 +22,19 @@ public:
 	void Render();
 
 	// 전방선언은 이렇게 해도 된다.
-	void SetBulletArr(class Bullet* _BulletPtr)
+	void SetBulletLeftArr(class Bullet* _BulletPtr)
 	{
-		BulletPtr = _BulletPtr;
+		BulletLeftPtr = _BulletPtr;
+	}
+
+	void SetBulletMidArr(class Bullet* _BulletPtr)
+	{
+		BulletMidPtr = _BulletPtr;
+	}
+
+	void SetBulletRightArr(class Bullet* _BulletPtr)
+	{
+		BulletRightPtr = _BulletPtr;
 	}
 
 protected:
@@ -34,7 +44,9 @@ private:
 
 	int2 Pos = int2(0, 0);
 
-	Bullet* BulletPtr;
+	Bullet* BulletLeftPtr;
+	Bullet* BulletRightPtr;
+	Bullet* BulletMidPtr;
 
 	// 이런 구조를 Has a라고 한다. Player Has a Bullet
 	// Bullet NewBullet; // 플레이어의 신체 내부에 총알 한발이 있다.
