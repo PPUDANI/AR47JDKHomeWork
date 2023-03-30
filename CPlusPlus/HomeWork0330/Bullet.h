@@ -1,42 +1,54 @@
 #pragma once
-
 #include "ConsoleGameMath.h"
-#include "ConsoleGameScreen.h"
+#include "ShootingGame.h"
 
+class Player;
+class ConsoleGameScreen;
 class Bullet
 {
 public:
+	static const int MaxBulletNum = 100;
+	static int BulletCount;
+	static Bullet* GetArrBullet()
+	{
+		return ArrBullet;
+	}
 
-	inline static int2& GetPos()
+	static void AllRender();
+	static void AllUpdate();
+
+	inline void SetPos(const int2& _Value)
+	{
+		Pos = _Value;
+	}
+
+	inline int2 GetPos() const
 	{
 		return Pos;
 	}
 
-	inline static void SetPos(int2 _Pos)
+	inline bool IsFire() const
 	{
-		Pos = _Pos;
+		return Fire;
 	}
 
-	inline static bool IsBulletFired()
+	inline void FireOn()
 	{
-		return BulletFired;
+		Fire = true;
 	}
 
-	inline static void FireBullet()
-	{
-		BulletFired = true;
-	}
+	void Update();
+	void Render();
 
-	inline static void StopBullet()
-	{
-		BulletFired = false;
-	}
+protected:
 
 private:
-	static Bullet MainBullet;
-	static bool BulletFired;
-	static int2 Pos;
-	
+	static Bullet ArrBullet[Bullet::MaxBulletNum];
+
 	Bullet();
+
+	bool Fire = false;
+
+	int2 Pos = int2(0, 0);
 };
 

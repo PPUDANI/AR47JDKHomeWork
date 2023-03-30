@@ -1,12 +1,8 @@
 
-#include <iostream>
 #include "ConsoleGameScreen.h"
-#include "Bullet.h"
-ConsoleGameScreen ConsoleGameScreen::MainScreen;
+#include <iostream>
 
-ConsoleGameScreen::ConsoleGameScreen()
-{
-}
+ConsoleGameScreen ConsoleGameScreen::MainScreen;
 
 void ConsoleGameScreen::ScreenClear()
 {
@@ -14,7 +10,7 @@ void ConsoleGameScreen::ScreenClear()
 	{
 		for (size_t x = 0; x < ScreenXSize; x++)
 		{
-			Arr[y][x] = 'o';
+			Arr[y][x] = 'a';
 		}
 	}
 }
@@ -68,24 +64,10 @@ void ConsoleGameScreen::SetScreenCharacter(const int2& _Pos, char _Ch)
 	Arr[_Pos.Y][_Pos.X] = _Ch;
 }
 
-void ConsoleGameScreen::SetScreenBullet(int2& _Pos, char _Ch)
+
+
+ConsoleGameScreen::ConsoleGameScreen()
 {
-	int2 TempPos = _Pos;
-	--TempPos.Y;
-
-	if (false == IsScreenOver(TempPos))
-	{
-		--_Pos.Y;
-	}
-	else
-	{
-		Bullet::StopBullet();
-	}
-
-	if (Bullet::IsBulletFired() == true)
-	{
-		Arr[_Pos.Y][_Pos.X] = _Ch;
-	}
 }
 
 int2 ConsoleGameScreen::GetScreenSize()

@@ -1,16 +1,13 @@
-
-#include <Windows.h>
-#include <conio.h>
-
 #include "Player.h"
 #include "ConsoleGameScreen.h"
+#include <conio.h>
+#include <Windows.h>
 #include "Bullet.h"
 
 Player::Player()
 {
 
 }
-
 // 화면바깥으로 못나가게 하세요. 
 void Player::Input()
 {
@@ -67,16 +64,23 @@ void Player::Input()
 		break;
 	case 'f':
 	case 'F':
-		if (Bullet::IsBulletFired() == false)
+		Bullet::BulletCount++;
+		if (Bullet::BulletCount <= Bullet::MaxBulletNum)
 		{
-			Bullet::SetPos(Pos);
-			Bullet::FireBullet();
+			BulletPtr[Bullet::BulletCount].SetPos(Pos);
+			BulletPtr[Bullet::BulletCount].FireOn();
 		}
-		
+
 		break;
 	default:
 		break;
 	}
 
 	Sleep(InterFrame);
+}
+
+
+void Player::Render()
+{
+	ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '*');
 }

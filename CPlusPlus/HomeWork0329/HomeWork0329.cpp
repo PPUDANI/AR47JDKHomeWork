@@ -19,7 +19,7 @@ int main()
 
 		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewPlayer.GetPos(), '*');
 
-		ConsoleGameScreen::GetMainScreen().SetScreenBullet(Bullet::GetPos(), '^');
+		ConsoleGameScreen::GetMainScreen().SetScreenBullet(Bullet::Pos, '^');
 
 		ConsoleGameScreen::GetMainScreen().ScreenPrint();
 		
