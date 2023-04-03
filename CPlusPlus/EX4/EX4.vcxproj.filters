@@ -10,5 +10,11 @@
     <ClCompile Include="EX4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ADefaultClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ADefaultClass.h" />
   </ItemGroup>
 </Project>
