@@ -17,7 +17,6 @@ ConsoleScreen::ConsoleScreen()
 			{
 				MapArr[y][x] = ' ';
 			}
-			
 		}
 	}
 }
