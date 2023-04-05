@@ -31,8 +31,14 @@ public:
 
 	GameEngineArray& operator=(const GameEngineArray& _Other)
 	{
-		ArrCount = _Other.ArrCount;
-		ArrPtr = _Other.ArrPtr;
+		this->ReSize(_Other.ArrCount);
+
+		// ArrPtr = _Other.ArrPtr;
+		for (int i = 0; i < _Other.ArrCount; i++)
+		{
+			ArrPtr[i] = _Other.ArrPtr[i];
+		}
+
 		return *this;
 	}
 
@@ -58,12 +64,19 @@ public:
 
 		if (nullptr != ArrPtr)
 		{
-			delete[] ArrPtr;
-			ArrPtr = nullptr;
-		}
+			DataType* TempPtr = ArrPtr;
 
-		ArrPtr = new DataType[_Value];
-		ArrCount = _Value;
+			ArrPtr = new DataType[_Value];
+
+			for (int i = 0; i < _Value; i++)
+			{
+				ArrPtr[i] = TempPtr[i];
+			}
+
+			delete[] TempPtr;
+
+			ArrCount = _Value;
+		}
 	}
 
 protected:
