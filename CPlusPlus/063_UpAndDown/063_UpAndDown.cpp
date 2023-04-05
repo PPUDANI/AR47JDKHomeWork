@@ -3,18 +3,51 @@
 
 #include <iostream>
 
-int main()
+// virtual이 붙어있는 클래스가 존재하면 이 클래스의 객체가 생성될 때 함수포인터의 배열을 만들어내고 그걸 함수포인터의 포인터로 저장한다.
+// void(*__Vfptr[??])() <- 가상함수 테이블
+class FightUnit
 {
-    std::cout << "Hello World!\n";
+public:
+    virtual int GetAtt()
+    {
+        return Att;
+    }
+private:
+    int Hp = 0;
+    int Att = 10;
+
+};
+
+class Player : FightUnit
+{
+public:
+    int GetAtt() override
+    {
+        return FightUnit::GetAtt();
+    }
+
+};
+
+class Monster
+{
+
+};
+
+void Fight(FightUnit* _Left, FightUnit* _Right)
+{
+    // 다운캐스팅 : 부모 클래스포인터인 인자를 자식 클래스포인터로 바꿀 수 있다.
+    // 부모형을 자식형으로 바꾼다
+    // 이 경우 최악의 방법이다. 몬스터의 부모클래스포인터를 플레이어의 클래스포인터로 바꾸는게 가능하다.
+    // 무슨 일이 벌어질지 알 수 없다.
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
+int main()
+{
+    Player NewPlayer0;
+    Player NewPlayer1;
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
+    Player* Ptr0 = &NewPlayer0;
+    FightUnit* Ptr1 = &Ptr0;
+    Fight(NewPlayer0, NewPlayer1);
+
+}
