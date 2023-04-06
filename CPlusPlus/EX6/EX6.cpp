@@ -5,7 +5,6 @@
 
 int main()
 {
-	int* Ptr[10];
-	std::cout << Ptr << '\n' << Ptr + 1 << std::endl;
+
 }
 

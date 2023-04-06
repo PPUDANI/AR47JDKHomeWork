@@ -24,7 +24,7 @@ int main()
         // int* ArrPtr = new int[20]
         GameEngineArray Array0(10);
 
-
+        
         for (size_t i = 0; i < Array0.Count(); i++)
         {
             Array0[i] = i;
@@ -36,7 +36,7 @@ int main()
         // 숙제 2 줄어들든 커지든 데이터는 보존되어야 한다.
         // Array0.ReSize(5);
 
-        Array0.ReSize(15);
+        Array0.ReSize(5);
 
         // Array0.ReSize(15);
         printf_s("<숙제 3, 4>\n");
