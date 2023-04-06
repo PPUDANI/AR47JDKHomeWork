@@ -19,7 +19,7 @@ public:
 		// ArrPtr = new int[100];
 		if (0 >= ArrCount)
 		{
-			//MessageBoxA("메모리의 크기가 0 이상이어야 합니다.");
+			MessageBoxA("메모리의 크기가 0 이상이어야 합니다.");
 		}
 	}
 
