@@ -3,10 +3,9 @@
 
 #include <iostream>
 
-//int Arr[100000] = { 0, };
-
 int main()
 {
-
+	int* Ptr[10];
+	std::cout << Ptr << '\n' << Ptr + 1 << std::endl;
 }
 
