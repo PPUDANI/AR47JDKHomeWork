@@ -1,7 +1,6 @@
 #pragma once
 
 typedef int DataType;
-
 // 설명 :
 class GameEngineArray
 {
@@ -18,6 +17,10 @@ public:
 		, ArrCount(_Value)
 	{
 		// ArrPtr = new int[100];
+		if (0 >= ArrCount)
+		{
+			//MessageBoxA("메모리의 크기가 0 이상이어야 합니다.");
+		}
 	}
 
 	~GameEngineArray()
