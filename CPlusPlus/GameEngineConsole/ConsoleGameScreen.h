@@ -1,6 +1,6 @@
 #pragma once
 #include "ConsoleGameMath.h"
-#include "GameEngineArray.h"
+#include "GameEngineArr.h"
 
 // 이게 1단계
 // 근본오브 근본 수학 물리 
