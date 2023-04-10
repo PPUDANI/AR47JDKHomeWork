@@ -1,26 +1,27 @@
 #pragma once
-
+#include <Windows.h>
 #include <assert.h>
-#include <windows.h>
 
-//class GameEngineDebug
-//{
-//public:
-// // Constrcuter destructer
-//	GameEngineDebug();
-//	~GameEngineDebug();
-//
-//  // Delete Function
-//	GameEngineDebug(const GameEngineDebug& _Other) = delete;
-//	GameEngineDebug(GameEngineDebug&& _Other) noexcept = delete;
-//	GameEngineDebug& operator=(const GameEngineDebug& _Other) = delete;
-//	GameEngineDebug& operator=(GameEngineDebug&& _Other) noexcept = delete;
-// 
-//protected:
-//
-//private:
-//
-//};
+//// Ό³Έν :
+class GameEngineDebug
+{
+public:
+	// constrcuter destructer
+	GameEngineDebug();
+	~GameEngineDebug();
 
-#define MessageBoxA(Value) MessageBoxA(nullptr, Value, "ERROR", MB_OK); assert(false)
+	// delete Function
+	GameEngineDebug(const GameEngineDebug& _Other) = delete;
+	GameEngineDebug(GameEngineDebug&& _Other) noexcept = delete;
+	GameEngineDebug& operator=(const GameEngineDebug& _Other) = delete;
+	GameEngineDebug& operator=(GameEngineDebug&& _Other) noexcept = delete;
 
+	static void LeckCheck();
+
+protected:
+
+private:
+
+};
+
+#define MsgBoxAssert(Text) MessageBoxA(nullptr, Text, "Error", MB_OK); assert(false);
