@@ -36,8 +36,6 @@ void Bomb::Render()
 		break;
 
 	case BoomState::Frame2:
-	{
-		
 		for (int i = -2; i <= 2; i += 4)
 		{
 			int2 SidePosX = Pos;
@@ -47,10 +45,8 @@ void Bomb::Render()
 			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(SidePosX, '@');
 			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(SidePosY, '@');
 		}
-	}
 	case BoomState::Frame1:
-	{
-		
+
 		for (int i = -1; i <= 1; i += 2)
 		{
 			int2 SidePosX = Pos;
@@ -60,17 +56,17 @@ void Bomb::Render()
 			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(SidePosX, '@');
 			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(SidePosY, '@');
 		}
-		
+
 		if (BoomState::Frame2 == BoomState)
 		{
 			BoomState = BoomState::Idle;
 			Off();
 		}
-		else if(BoomState::Frame1 == BoomState)
+		else if (BoomState::Frame1 == BoomState)
 		{
 			BoomState = BoomState::Frame2;
 		}
-	}
+
 	    break;
 	default:
 		break;
