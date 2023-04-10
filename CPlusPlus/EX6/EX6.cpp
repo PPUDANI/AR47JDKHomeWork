@@ -2,9 +2,19 @@
 //
 
 #include <iostream>
-
+#include "A.h"
 int main()
 {
+	A Obj(10);
 
+	std::cout << Obj.GetVal();
+
+	//int Value = 0;
+	//int const * const Ptr = &Value;
+
+	//Value = 3;
+
+	//*Ptr = 3;
+	//Ptr = Ptr + 1;
 }
 
