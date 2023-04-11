@@ -42,8 +42,8 @@ public:
 	GameEngineArray& operator=(const GameEngineArray& _Other)
 	{
 		// 얕은 복사라고 합니다.
-		//ArrCount = _Other.ArrCount;
-		//ArrPtr = _Other.ArrPtr;
+		// ArrCount = _Other.ArrCount;
+		// ArrPtr = _Other.ArrPtr;
 
 		// 나만의 메모리를 만들고 
 		// 깊은 복사라고 합니다.

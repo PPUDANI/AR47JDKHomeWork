@@ -3,18 +3,49 @@
 
 #include <iostream>
 #include "A.h"
+
+template <typename Datatype>
+class Ptr
+{
+	Datatype* Ptr1= nullptr;
+};
+
+
+class B
+{
+public:
+	int a = 3;
+	B* Ptr = nullptr;
+
+	int GetA()
+	{
+		return a;
+	}
+
+	void SetPtr(B* _Ptr)
+	{
+		Ptr = _Ptr;
+	}
+	int PtrGetA()
+	{
+		return Ptr->GetA();
+	}
+
+};
+
+B* Ptr = new B;
+
 int main()
 {
 	A Obj(10);
 
 	std::cout << Obj.GetVal();
 
-	//int Value = 0;
-	//int const * const Ptr = &Value;
+	B ObjB{};
 
-	//Value = 3;
+	ObjB.SetPtr(&ObjB);
+	int a = ObjB.PtrGetA();
 
-	//*Ptr = 3;
-	//Ptr = Ptr + 1;
+	std::cout << a;
 }
 
