@@ -13,8 +13,6 @@ void Bomb::Init()
 	RenderChar = '@';
 }
 
-// explogen
-
 void Bomb::Update()
 {
 	ConsoleGameObject::Update();
@@ -26,7 +24,6 @@ void Bomb::Update()
 	}
 
 }
-
 
 void Bomb::Render()
 {
