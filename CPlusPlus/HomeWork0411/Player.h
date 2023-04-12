@@ -12,8 +12,8 @@ public:
 	Player();
 	void Update() override;
 	bool IsMoveAble(const int2 _NextPos);
-	bool IsBomb(int2 _NextPos);
-
+	bool IsBomb(const int2 _NextPos) const;
+	 
 protected:
 
 private:

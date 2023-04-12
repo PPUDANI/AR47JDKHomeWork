@@ -1,12 +1,9 @@
 #include "Bomb.h"
 #include <GameEngineConsole/ConsoleGameScreen.h>
 
-int Bomb::BombDeleteCount = 0;
-int Bomb::BombCurCount = 0;
-
 Bomb::Bomb()
 {
-	BombCurCount++;
+
 }
 
 Bomb::~Bomb()
@@ -30,7 +27,6 @@ void Bomb::Update()
 	{
 		Death();
 		// Off();
-		BombDeleteCount++;
 	}
 
 	if (0 >= --BoomCount)

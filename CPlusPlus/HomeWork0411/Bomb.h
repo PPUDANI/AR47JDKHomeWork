@@ -20,9 +20,6 @@ public:
 
 	void Init(int _BombPower);
 
-	static int BombDeleteCount;
-	static int BombCurCount;
-
 protected:
 	void Update() override;
 	void Render() override;
