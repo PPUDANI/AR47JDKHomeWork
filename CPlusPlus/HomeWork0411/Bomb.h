@@ -7,7 +7,8 @@ class Bomb : public ConsoleGameObject
 {
 
 public:
-
+	static int TotalBombCount;
+	static int ExplodedBombCount;
 	// constrcuter destructer
 	Bomb();
 	~Bomb();
