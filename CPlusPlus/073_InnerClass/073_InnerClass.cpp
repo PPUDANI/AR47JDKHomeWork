@@ -9,12 +9,9 @@ public:
     class PublicClass
     {
     public:
-        static int Geta()
-        {
-            return a;
-        }
-    private:
         static int a;
+    private:
+        
     };
     int PublicClass::a = 3;
 
@@ -26,5 +23,5 @@ public:
 int main()
 {
     Test newObject{};
-    printf("Test: %d\n PublicClass: %d", newObject.a, Test::PublicClass::Geta());
+    printf("Test: %d\n PublicClass: %d", newObject.a, );
 }
