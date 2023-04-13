@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="HomeWorkEX.cpp" />
+    <ClCompile Include="..\HomeWork0411\Player.cpp" />
+    <ClCompile Include="..\HomeWork0411\Bomb.cpp" />
+    <ClCompile Include="..\HomeWork0411\ConsoleObjectManager.cpp" />
+    <ClCompile Include="..\HomeWork0411\GameEnum.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HomeWork0411\GameEnum.h" />
+    <ClInclude Include="..\HomeWork0411\Player.h" />
+    <ClInclude Include="..\HomeWork0411\Bomb.h" />
+    <ClInclude Include="..\HomeWork0411\ConsoleObjectManager.h" />
+  </ItemGroup>
+</Project>

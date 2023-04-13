@@ -1,12 +1,17 @@
 #include "Bomb.h"
 #include <GameEngineConsole/ConsoleGameScreen.h>
 
+int Bomb::TotalBombCount = 0;
+int Bomb::ExplodedBombCount = 0;
+
 Bomb::Bomb()
 {
+	TotalBombCount++;
 }
 
 Bomb::~Bomb()
 {
+
 }
 
 void Bomb::Init(int _BombPower)
@@ -25,6 +30,7 @@ void Bomb::Update()
 	if (CurExpPower == MaxExpPower)
 	{
 		Death();
+		ExplodedBombCount++;
 		// Off();
 	}
 

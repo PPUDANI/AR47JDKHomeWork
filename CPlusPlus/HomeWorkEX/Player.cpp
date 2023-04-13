@@ -8,7 +8,6 @@
 #include "ConsoleObjectManager.h"
 
 bool Player::IsGameUpdate = true;
-
 Player::Player()
 {
 	RenderChar = '*';
@@ -16,22 +15,34 @@ Player::Player()
 
 }
 
-bool Player::IsBomb(int2 _NextPos)
+bool Player::IsBomb(const int2 _NextPos) const
 {
-	GameEngineArray<ConsoleGameObject*>& BombGroup
-		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
+	// 폭탄이 설치되었다면 못통과하게 만들어놓으세요.
+	GameEngineArray<ConsoleGameObject*>& BombGroup = ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
 
-	for (size_t i = 0; i < BombGroup.Count(); i++)
+	for (int i = Bomb::ExplodedBombCount; i < Bomb::TotalBombCount; i++)
 	{
 		ConsoleGameObject* Ptr = BombGroup[i];
-
 		if (nullptr == Ptr)
 		{
 			continue;
 		}
 
-		int2 BombPos = Ptr->GetPos();
-		if (_NextPos == BombPos)
+		if (_NextPos == Ptr->GetPos())
+		{
+			return true;
+		}
+	}
+
+
+	return false;
+}
+
+bool Player::IsMoveAble(const int2 _NextPos)
+{
+	if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(_NextPos))
+	{
+		if (false == IsBomb(_NextPos))
 		{
 			return true;
 		}
@@ -52,14 +63,13 @@ void Player::Update()
 
 	int2 NextPos = { 0, 0 };
 
-
 	switch (Ch)
 	{
 	case 'a':
 	case 'A':
 		NextPos = Pos;
 		NextPos.X -= 1;
-		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
+		if (true == IsMoveAble(NextPos))
 		{
 			Pos.X -= 1;
 		}
@@ -68,7 +78,7 @@ void Player::Update()
 	case 'D':
 		NextPos = Pos;
 		NextPos.X += 1;
-		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
+		if (true == IsMoveAble(NextPos))
 		{
 			Pos.X += 1;
 		}
@@ -77,7 +87,7 @@ void Player::Update()
 	case 'W':
 		NextPos = Pos;
 		NextPos.Y -= 1;
-		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
+		if (true == IsMoveAble(NextPos))
 		{
 			Pos.Y -= 1;
 		}
@@ -86,7 +96,7 @@ void Player::Update()
 	case 'S':
 		NextPos = Pos;
 		NextPos.Y += 1;
-		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
+		if (true == IsMoveAble(NextPos))
 		{
 			Pos.Y += 1;
 		}
@@ -94,9 +104,13 @@ void Player::Update()
 	case 'f':
 	case 'F':
 	{
+		// 여기 이상황에서 보면
+		// ConsoleObjectManager 있고
+		// Player 
 		Bomb* NewBomb = ConsoleObjectManager::CreateConsoleObject<Bomb>(ObjectOrder::Bomb);
 		NewBomb->Init(BombPower);
 		NewBomb->SetPos(GetPos());
+		// 폭탄설치 
 		break;
 	}
 	case 'q':

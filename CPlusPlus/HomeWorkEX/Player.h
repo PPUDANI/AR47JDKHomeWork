@@ -11,12 +11,14 @@ public:
 public:
 	Player();
 	void Update() override;
-
-	bool IsBomb(int2 _NextPos);
-
+	bool IsMoveAble(const int2 _NextPos);
+	bool IsBomb(const int2 _NextPos) const;
+	 
 protected:
 
 private:
-	int BombPower = 5;
+	int BombPower = 3;
+	
+	
 };
 

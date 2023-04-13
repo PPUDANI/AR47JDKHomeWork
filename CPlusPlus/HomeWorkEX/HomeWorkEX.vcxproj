@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{40e07127-472a-4ebf-8035-c41bd71f0a08}</ProjectGuid>
-    <RootNamespace>My073Enum</RootNamespace>
+    <ProjectGuid>{f91cf547-bdfe-4841-a75c-c0938ce715b0}</ProjectGuid>
+    <RootNamespace>HomeWorkEX</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>072_Enum</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,6 +70,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -128,7 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="073_Enum.cpp" />
+    <ClCompile Include="..\HomeWork0411\Bomb.cpp" />
+    <ClCompile Include="..\HomeWork0411\ConsoleObjectManager.cpp" />
+    <ClCompile Include="..\HomeWork0411\GameEnum.cpp" />
+    <ClCompile Include="..\HomeWork0411\Player.cpp" />
+    <ClCompile Include="HomeWorkEX.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HomeWork0411\Bomb.h" />
+    <ClInclude Include="..\HomeWork0411\ConsoleObjectManager.h" />
+    <ClInclude Include="..\HomeWork0411\GameEnum.h" />
+    <ClInclude Include="..\HomeWork0411\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
+      <Project>{3f46a30c-e009-4863-8073-2c7b4d278be6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GameEngineConsole\GameEngineConsole.vcxproj">
+      <Project>{c94bb249-bf0a-4f3c-84e4-b99968d1446a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
