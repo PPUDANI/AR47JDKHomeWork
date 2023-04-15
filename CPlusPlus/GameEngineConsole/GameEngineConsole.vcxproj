@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.cpp" />
     <ClCompile Include="ConsoleGameMath.cpp">
       <SubType>
       </SubType>
@@ -154,6 +155,7 @@
     <ClCompile Include="GameEngineConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.h" />
     <ClInclude Include="ConsoleGameMath.h">
       <SubType>
       </SubType>

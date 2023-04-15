@@ -1,8 +1,11 @@
 #include "GameEngineRandom.h"
 #include <iostream>
-GameEngineRandom::GameEngineRandom()
+
+GameEngineRandom GameEngineRandom::MainRandom;
+
+GameEngineRandom::GameEngineRandom() 
 {
-	Seed = time(nullptr);
+	Seed = (int)time(nullptr);
 	srand(Seed);
 }
 
@@ -12,8 +15,12 @@ GameEngineRandom::GameEngineRandom(int _Seed)
 	srand(Seed);
 }
 
-
-GameEngineRandom::~GameEngineRandom()
+int GameEngineRandom::RandomInt(int _Min, int _Max)
 {
-
+	return (rand() % (_Max + 1 - _Min)) + _Min;
 }
+
+GameEngineRandom::~GameEngineRandom() 
+{
+}
+

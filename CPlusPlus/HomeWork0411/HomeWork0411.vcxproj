@@ -139,11 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="ConsoleObjectManager.cpp" />
-    <ClCompile Include="GameEnum.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Bomb.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\GameEnum.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Item.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Player.cpp" />
     <ClCompile Include="HomeWork0411.cpp" />
-    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
@@ -154,10 +154,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bomb.h" />
-    <ClInclude Include="ConsoleObjectManager.h" />
-    <ClInclude Include="GameEnum.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Bomb.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\GameEnum.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Item.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

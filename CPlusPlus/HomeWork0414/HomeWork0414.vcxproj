@@ -70,6 +70,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -127,7 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.cpp" />
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.cpp" />
+    <ClCompile Include="GameEnum.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HomeWork0414.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.h" />
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.h" />
+    <ClInclude Include="GameEnum.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
+      <Project>{3f46a30c-e009-4863-8073-2c7b4d278be6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\GameEngineConsole\GameEngineConsole.vcxproj">
+      <Project>{c94bb249-bf0a-4f3c-84e4-b99968d1446a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

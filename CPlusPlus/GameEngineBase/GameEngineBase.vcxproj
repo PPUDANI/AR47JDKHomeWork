@@ -127,22 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineBase\GameEngineRandom.cpp" />
     <ClCompile Include="GameEngineBase.cpp" />
     <ClCompile Include="GameEngineDebug.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="GameEngineRandom.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineBase\GameEngineRandom.h" />
     <ClInclude Include="GameEngineDebug.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="GameEngineRandom.h">
       <SubType>
       </SubType>
     </ClInclude>

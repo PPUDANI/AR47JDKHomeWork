@@ -2,10 +2,9 @@
 #include <conio.h>
 #include <Windows.h>
 #include <GameEngineConsole/ConsoleGameScreen.h>
-#include "ConsoleObjectManager.h"
+#include <GameEngineConsole/ConsoleObjectManager.h>
 #include "Bomb.h"
 #include "GameEnum.h"
-#include "ConsoleObjectManager.h"
 
 bool Player::IsGameUpdate = true;
 
@@ -18,13 +17,18 @@ Player::Player()
 
 bool Player::IsBomb(int2 _NextPos)
 {
-	GameEngineArray<ConsoleGameObject*>& BombGroup
+	std::list<ConsoleGameObject*>& BombGroup
 		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
 
-	for (size_t i = 0; i < BombGroup.Count(); i++)
+	// Ranged for 라는 문법이에요
+	
+	// 절대절대절대. 내부에서 구조나 개수가 바뀌는 행동을 하면 안되요.
+	// push_back
+	// push_front
+	// erase
+	for (ConsoleGameObject* Ptr : BombGroup)
 	{
-		ConsoleGameObject* Ptr = BombGroup[i];
-
+		// 터질때가 있습니다.
 		if (nullptr == Ptr)
 		{
 			continue;
