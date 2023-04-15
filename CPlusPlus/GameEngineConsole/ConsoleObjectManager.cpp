@@ -4,15 +4,15 @@
 std::vector<std::list<ConsoleGameObject*>> ConsoleObjectManager::AllObject;
 
 
-ConsoleObjectManager::ConsoleObjectManager() 
+ConsoleObjectManager::ConsoleObjectManager()
 {
 }
 
-ConsoleObjectManager::~ConsoleObjectManager() 
+ConsoleObjectManager::~ConsoleObjectManager()
 {
 }
 
-void ConsoleObjectManager::ConsoleAllObjectUpdate() 
+void ConsoleObjectManager::ConsoleAllObjectUpdate()
 {
 	// std::vector
 	for (size_t GroupIndex = 0; GroupIndex < AllObject.size(); GroupIndex++)
@@ -23,7 +23,7 @@ void ConsoleObjectManager::ConsoleAllObjectUpdate()
 		std::list<ConsoleGameObject*>::iterator Start = Group.begin();
 		std::list<ConsoleGameObject*>::iterator End = Group.end();
 
-		for (;Start != End; ++Start)
+		for (; Start != End; ++Start)
 		{
 			ConsoleGameObject* Object = *Start;
 

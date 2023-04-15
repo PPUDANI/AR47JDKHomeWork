@@ -5,7 +5,7 @@
 class Parts : public ConsoleGameObject
 {
 public:
-	// constrcuter destructer
+	// constructor destructor
 	Parts();
 	~Parts();
 
@@ -22,4 +22,3 @@ private:
 	Parts* Next;
 	Parts* Prev;
 };
-

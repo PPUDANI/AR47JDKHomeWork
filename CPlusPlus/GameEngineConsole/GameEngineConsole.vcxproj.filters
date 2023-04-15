@@ -5,13 +5,13 @@
     <ClCompile Include="ConsoleGameMath.cpp" />
     <ClCompile Include="ConsoleGameObject.cpp" />
     <ClCompile Include="ConsoleGameScreen.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.cpp" />
+    <ClCompile Include="ConsoleObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleGameMath.h" />
     <ClInclude Include="ConsoleGameObject.h" />
     <ClInclude Include="ConsoleGameScreen.h" />
     <ClInclude Include="GameEngineArray.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.h" />
+    <ClInclude Include="ConsoleObjectManager.h" />
   </ItemGroup>
 </Project>

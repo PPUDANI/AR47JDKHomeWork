@@ -1,11 +1,12 @@
 #pragma once
 #include "Parts.h"
 
+
 // Ό³Έν :
 class Head : public Parts
 {
 public:
-	// constrcuter destructer
+	// constructor destructor
 	Head();
 	~Head();
 

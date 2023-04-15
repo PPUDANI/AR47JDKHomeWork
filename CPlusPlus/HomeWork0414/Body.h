@@ -5,7 +5,7 @@ class ConsoleGameScreen;
 class Body : public ConsoleGameObject
 {
 public:
-	// constrcuter destructer
+	// constructor destructor
 	Body();
 	~Body();
 

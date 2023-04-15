@@ -2,7 +2,7 @@
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineConsole/ConsoleGameScreen.h>
 
-Body::Body() 
+Body::Body()
 {
 	RenderChar = 'i';
 
@@ -11,7 +11,7 @@ Body::Body()
 	SetPos({ X, Y });
 }
 
-Body::~Body() 
+Body::~Body()
 {
 }
 

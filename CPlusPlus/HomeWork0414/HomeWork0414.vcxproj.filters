@@ -2,15 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="HomeWork0414.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.cpp" />
-    <ClCompile Include="GameEnum.cpp" />
+    <ClCompile Include="Parts.cpp" />
+    <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Head.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.h" />
-    <ClInclude Include="GameEnum.h" />
+    <ClInclude Include="Parts.h" />
+    <ClInclude Include="Body.h" />
+    <ClInclude Include="Head.h" />
   </ItemGroup>
 </Project>

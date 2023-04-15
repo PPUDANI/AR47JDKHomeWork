@@ -1,21 +1,22 @@
 #include "Item.h"
+#include "Player.h"
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineConsole/ConsoleGameScreen.h>
 
-Item::Item() 
+Item::Item()
 {
 	RenderChar = '&';
 
 	int X = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().X - 1);
 	int Y = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().Y - 1);
-	SetPos({X, Y});
+	SetPos({ X, Y });
 }
 
-Item::~Item() 
+Item::~Item()
 {
 }
 
-void Item::Update() 
+void Item::Update()
 {
 
 }

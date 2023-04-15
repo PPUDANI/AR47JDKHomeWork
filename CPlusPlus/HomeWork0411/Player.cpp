@@ -4,6 +4,7 @@
 #include <GameEngineConsole/ConsoleGameScreen.h>
 #include <GameEngineConsole/ConsoleObjectManager.h>
 #include "Bomb.h"
+#include "Item.h"
 #include "GameEnum.h"
 
 bool Player::IsGameUpdate = true;
@@ -21,7 +22,7 @@ bool Player::IsBomb(int2 _NextPos)
 		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
 
 	// Ranged for 라는 문법이에요
-	
+
 	// 절대절대절대. 내부에서 구조나 개수가 바뀌는 행동을 하면 안되요.
 	// push_back
 	// push_front
@@ -37,6 +38,31 @@ bool Player::IsBomb(int2 _NextPos)
 		int2 BombPos = Ptr->GetPos();
 		if (_NextPos == BombPos)
 		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Player::IsItem(int2 _NextPos)
+{
+
+	std::list<ConsoleGameObject*>& ItemGroup
+		= ConsoleObjectManager::GetGroup(ObjectOrder::Item);
+
+	for (ConsoleGameObject* Ptr : ItemGroup)
+	{
+		// 터질때가 있습니다.
+		if (nullptr == Ptr)
+		{
+			continue;
+		}
+
+		int2 ItemPos = Ptr->GetPos();
+		if (_NextPos == ItemPos)
+		{
+			Ptr->Off();
 			return true;
 		}
 	}
@@ -63,6 +89,11 @@ void Player::Update()
 	case 'A':
 		NextPos = Pos;
 		NextPos.X -= 1;
+		if (IsItem(NextPos))
+		{
+			BombPower++;
+		}
+
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
 		{
 			Pos.X -= 1;
@@ -72,6 +103,10 @@ void Player::Update()
 	case 'D':
 		NextPos = Pos;
 		NextPos.X += 1;
+		if (IsItem(NextPos))
+		{
+			BombPower++;
+		}
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
 		{
 			Pos.X += 1;
@@ -81,6 +116,10 @@ void Player::Update()
 	case 'W':
 		NextPos = Pos;
 		NextPos.Y -= 1;
+		if (IsItem(NextPos))
+		{
+			BombPower++;
+		}
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
 		{
 			Pos.Y -= 1;
@@ -90,6 +129,10 @@ void Player::Update()
 	case 'S':
 		NextPos = Pos;
 		NextPos.Y += 1;
+		if (IsItem(NextPos))
+		{
+			BombPower++;
+		}
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos) && false == IsBomb(NextPos))
 		{
 			Pos.Y += 1;

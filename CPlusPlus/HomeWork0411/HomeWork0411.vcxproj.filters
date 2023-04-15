@@ -2,15 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="HomeWork0411.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Bomb.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\GameEnum.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Item.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Player.cpp" />
+    <ClCompile Include="Bomb.cpp" />
+    <ClCompile Include="GameEnum.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Player.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Bomb.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\GameEnum.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0407\Item.h" />
+    <ClInclude Include="Bomb.h" />
+    <ClInclude Include="GameEnum.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

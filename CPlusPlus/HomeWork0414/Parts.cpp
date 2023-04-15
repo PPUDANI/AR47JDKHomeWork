@@ -1,14 +1,14 @@
 #include "Parts.h"
 
-Parts::Parts() 
+Parts::Parts()
 {
 }
 
-Parts::~Parts() 
+Parts::~Parts()
 {
 }
 
-void Parts::Update() 
+void Parts::Update()
 {
 	ConsoleGameObject::Update();
 }

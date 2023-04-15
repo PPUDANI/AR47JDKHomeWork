@@ -1,22 +1,26 @@
 #include "Head.h"
+
 #include <conio.h>
+#include <list>
 #include <GameEngineConsole/ConsoleGameScreen.h>
+#include <GameEngineConsole/ConsoleObjectManager.h>
 
 bool Head::IsPlay = true;
 
-Head::Head() 
+Head::Head()
 {
 	RenderChar = '$';
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
 }
 
-Head::~Head() 
+Head::~Head()
 {
 }
 
 void Head::IsBodyCheck()
 {
-
+	std::list<ConsoleGameObject*> BodyGroup =
+		ConsoleObjectManager::GetGroup(1);
 }
 
 void Head::NewBodyCreateCheck()
@@ -35,9 +39,9 @@ void Head::Update()
 
 	if (0 == _kbhit())
 	{
-		// SetPos(GetPos() + Dir);
-		// IsBodyCheck();
-		// NewBodyCreateCheck();
+		SetPos(GetPos() + Dir);
+		IsBodyCheck();
+		NewBodyCreateCheck();
 		return;
 	}
 

@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.cpp" />
     <ClCompile Include="ConsoleGameMath.cpp">
       <SubType>
       </SubType>
@@ -152,10 +151,13 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ConsoleObjectManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GameEngineConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineConsole\ConsoleObjectManager.h" />
     <ClInclude Include="ConsoleGameMath.h">
       <SubType>
       </SubType>
@@ -165,6 +167,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ConsoleGameScreen.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ConsoleObjectManager.h">
       <SubType>
       </SubType>
     </ClInclude>

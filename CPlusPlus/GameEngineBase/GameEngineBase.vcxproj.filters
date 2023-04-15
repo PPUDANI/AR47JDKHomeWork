@@ -3,10 +3,10 @@
   <ItemGroup>
     <ClCompile Include="GameEngineBase.cpp" />
     <ClCompile Include="GameEngineDebug.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineBase\GameEngineRandom.cpp" />
+    <ClCompile Include="GameEngineRamdom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineDebug.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\GameEngineBase\GameEngineRandom.h" />
+    <ClInclude Include="GameEngineRamdom.h" />
   </ItemGroup>
 </Project>

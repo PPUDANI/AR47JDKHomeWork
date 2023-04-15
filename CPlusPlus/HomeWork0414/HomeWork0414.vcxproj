@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ba998bdc-bf12-4afe-990c-75071d805f21}</ProjectGuid>
+    <ProjectGuid>{99374a22-909e-4baa-9668-28ed8d94ee4e}</ProjectGuid>
     <RootNamespace>HomeWork0414</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -139,20 +139,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.cpp" />
-    <ClCompile Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.cpp" />
-    <ClCompile Include="GameEnum.cpp">
+    <ClCompile Include="Body.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Head.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="HomeWork0414.cpp" />
+    <ClCompile Include="Parts.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Body.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Head.h" />
-    <ClInclude Include="..\..\..\Teacher\AR47\CPlusPlus\HomeWork0414\Parts.h" />
-    <ClInclude Include="GameEnum.h">
+    <ClInclude Include="Body.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Head.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Parts.h">
       <SubType>
       </SubType>
     </ClInclude>
