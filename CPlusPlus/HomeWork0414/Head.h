@@ -1,6 +1,6 @@
 #pragma once
 #include "Parts.h"
-
+#include "Body.h"
 
 // Ό³Έν :
 class Head : public Parts
@@ -22,9 +22,9 @@ protected:
 	void Update() override;
 	void IsBodyCheck();
 	void NewBodyCreateCheck();
-
 private:
-	int2 Dir = int2::Up;
+	int2 Dir = int2::Left;
+	int2 PrevPos;
 
 };
 

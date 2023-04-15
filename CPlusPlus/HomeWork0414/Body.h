@@ -9,6 +9,7 @@ public:
 	Body();
 	~Body();
 
+	
 	// delete Function
 	Body(const Body& _Other) = delete;
 	Body(Body&& _Other) noexcept = delete;
@@ -18,6 +19,6 @@ public:
 protected:
 
 private:
-
+	
 };
 

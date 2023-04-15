@@ -18,7 +18,9 @@ public:
 protected:
 	void Update() override;
 
+	Parts* Next = nullptr;
+	Parts* Prev = nullptr;
+
 private:
-	Parts* Next;
-	Parts* Prev;
+	
 };

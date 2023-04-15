@@ -46,7 +46,7 @@ public:
 protected:
 	int2 Pos;
 	char RenderChar = ' ';
-
+	
 private:
 	bool UpdateValue = true;
 	bool DeathValue = false;

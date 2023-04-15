@@ -4,6 +4,8 @@
 #include <list>
 #include <GameEngineConsole/ConsoleGameScreen.h>
 #include <GameEngineConsole/ConsoleObjectManager.h>
+#include "GameEnum.h"
+
 
 bool Head::IsPlay = true;
 
@@ -19,9 +21,26 @@ Head::~Head()
 
 void Head::IsBodyCheck()
 {
-	std::list<ConsoleGameObject*> BodyGroup =
-		ConsoleObjectManager::GetGroup(1);
+	std::list<ConsoleGameObject*>& BodyGroup =
+		ConsoleObjectManager::GetGroup(ObjectOrder::Body);
+
+	std::list<ConsoleGameObject*>::iterator Start = BodyGroup.begin();
+	std::list<ConsoleGameObject*>::iterator End = BodyGroup.end();
+
+	for (; Start != End; ++Start)
+	{
+		if (nullptr == (*Start))
+		{
+			return;
+		}
+
+		if (Pos == (*Start)->GetPos())
+		{
+			Body* NewBody = ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
+		}
+	}
 }
+
 
 void Head::NewBodyCreateCheck()
 {

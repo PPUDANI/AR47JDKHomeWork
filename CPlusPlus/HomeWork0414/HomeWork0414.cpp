@@ -10,7 +10,7 @@
 #include "Head.h"
 #include "Body.h"
 #include <conio.h>
-
+#include "GameEnum.h"
 
 int main()
 {
@@ -24,8 +24,8 @@ int main()
 	int2 ScreenSize = { 20, 10 };
 	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
 
-	ConsoleObjectManager::CreateConsoleObject<Head>(0);
-	ConsoleObjectManager::CreateConsoleObject<Body>(1);
+	ConsoleObjectManager::CreateConsoleObject<Head>(ObjectOrder::Head);
+	ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
 
 
 	// 1번째 
