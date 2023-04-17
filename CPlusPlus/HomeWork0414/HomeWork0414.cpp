@@ -21,7 +21,7 @@ int main()
 
 	GameEngineDebug::LeckCheck();
 
-	int2 ScreenSize = { 20, 10 };
+	int2 ScreenSize = { 4, 3 };
 	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
 
 	ConsoleObjectManager::CreateConsoleObject<Head>(ObjectOrder::Head);
@@ -50,7 +50,7 @@ int main()
 		ConsoleObjectManager::ConsoleAllObjectUpdate();
 		ConsoleObjectManager::ConsoleAllObjectRender();
 		ConsoleObjectManager::ConsoleAllObjectRelease();
-		Sleep(200);
+		Sleep(500);
 	}
 
 	ConsoleObjectManager::ConsoleAllObjectDelete();

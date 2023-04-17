@@ -11,7 +11,7 @@ void ConsoleGameScreen::ScreenClear()
 	{
 		for (size_t x = 0; x < this->Size.X; x++)
 		{
-			ArrScreen[y][x] = '`';
+			ArrScreen[y][x] = '-';
 		}
 	}
 }

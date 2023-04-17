@@ -38,8 +38,9 @@ Player Player::GetPlayer()
 
 int main()
 {
-}
     std::cout << "Hello World!\n";
+}
+    
 
 void Function0()
 {

@@ -8,15 +8,55 @@
 
 
 bool Head::IsPlay = true;
+int Head::EmptyCount = 0;
 
 Head::Head()
 {
-	RenderChar = '$';
+	RenderChar = '@';
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
+
+	int2 ScreenSize = ConsoleGameScreen::GetMainScreen().GetScreenSize();
+	EmptyCount = (ScreenSize.X * ScreenSize.Y) - 1; // 빈 공간 개수, 첫 Body와 'Head'개수도 제거
 }
 
 Head::~Head()
 {
+}
+
+void Head::BodyUpdate()
+{
+	std::list<ConsoleGameObject*>& BodyGroup =
+		ConsoleObjectManager::GetGroup(ObjectOrder::Body);
+
+	std::list<ConsoleGameObject*>::reverse_iterator ReverseBegin = BodyGroup.rbegin();
+	std::list<ConsoleGameObject*>::reverse_iterator ReverseEnd = BodyGroup.rend();
+	std::list<ConsoleGameObject*>::reverse_iterator PrevReverseEnd = std::prev(ReverseEnd);
+
+	
+	for (; ReverseBegin != PrevReverseEnd; ++ReverseBegin)
+	{
+		if (nullptr == (*ReverseBegin))
+		{
+			continue;
+		}
+
+		if ( (*ReverseBegin)->IsAcquired() )
+		{
+			std::list<ConsoleGameObject*>::reverse_iterator PrevBody = std::next(ReverseBegin);
+			(*ReverseBegin)->SetPos((*PrevBody)->GetPos());
+		}
+	}
+
+	if ((*PrevReverseEnd)->IsAcquired())
+	{
+		(*PrevReverseEnd)->SetPos(PrevPos);
+	}
+	if (a == true)
+	{
+		--EmptyCount; // 바디가 생기면 빈 공간 개수 감소
+		Body* NewBody = ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
+		a = false;
+	}
 }
 
 void Head::IsBodyCheck()
@@ -24,19 +64,30 @@ void Head::IsBodyCheck()
 	std::list<ConsoleGameObject*>& BodyGroup =
 		ConsoleObjectManager::GetGroup(ObjectOrder::Body);
 
-	std::list<ConsoleGameObject*>::iterator Start = BodyGroup.begin();
+	std::list<ConsoleGameObject*>::iterator Begin = BodyGroup.begin();
 	std::list<ConsoleGameObject*>::iterator End = BodyGroup.end();
 
-	for (; Start != End; ++Start)
+	for (; Begin != End; ++Begin)
 	{
-		if (nullptr == (*Start))
+		if (nullptr == (*Begin))
 		{
-			return;
+			continue;
 		}
-
-		if (Pos == (*Start)->GetPos())
+		if ((*Begin)->GetPos() == Pos)
 		{
-			Body* NewBody = ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
+			
+			if ( false == (*Begin)->IsAcquired())
+			{
+				
+				a = true;
+				(*Begin)->Acquire();
+				(*Begin)->SetRenderChar('O');
+			}
+			else
+			{
+				IsPlay = false;
+			}
+			
 		}
 	}
 }
@@ -55,12 +106,13 @@ void Head::Update()
 		IsPlay = false;
 	}
 
-
 	if (0 == _kbhit())
 	{
+		PrevPos = Pos;
 		SetPos(GetPos() + Dir);
 		IsBodyCheck();
-		NewBodyCreateCheck();
+		BodyUpdate();
+		//NewBodyCreateCheck();
 		return;
 	}
 
@@ -94,15 +146,14 @@ void Head::Update()
 		return;
 	}
 
+	PrevPos = Pos;
 	SetPos(GetPos() + Dir);
 	IsBodyCheck();
-	NewBodyCreateCheck();
+	BodyUpdate();
+	//NewBodyCreateCheck();
 
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
 	}
-
-
-
 }

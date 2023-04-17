@@ -10,6 +10,11 @@ public:
 		Pos = _Value;
 	}
 
+	inline void SetRenderChar(const char _Value)
+	{
+		RenderChar = _Value;
+	}
+
 	inline int2 GetPos() const
 	{
 		return Pos;
@@ -40,6 +45,9 @@ public:
 		UpdateValue = false;
 	}
 
+	virtual bool IsAcquired();
+	virtual void Acquire();
+
 	virtual void Update();
 	virtual void Render();
 
@@ -50,6 +58,5 @@ protected:
 private:
 	bool UpdateValue = true;
 	bool DeathValue = false;
-
 };
 

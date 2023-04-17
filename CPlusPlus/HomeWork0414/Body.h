@@ -9,7 +9,16 @@ public:
 	Body();
 	~Body();
 
-	
+	bool IsAcquired () override
+	{
+		return Acquired;
+	}
+
+	void Acquire () override
+	{
+		Acquired = true;
+	}
+
 	// delete Function
 	Body(const Body& _Other) = delete;
 	Body(Body&& _Other) noexcept = delete;
@@ -19,6 +28,7 @@ public:
 protected:
 
 private:
-	
+	bool IsEmptySpace(const int _X, const int _Y);
+	bool Acquired = false;
 };
 
