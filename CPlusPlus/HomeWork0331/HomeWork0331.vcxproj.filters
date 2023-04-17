@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="HomeWork0331.cpp" />
     <ClCompile Include="ConsoleGameMath.cpp">
       <Filter>Level0</Filter>
     </ClCompile>
@@ -23,6 +22,7 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>Level2</Filter>
     </ClCompile>
+    <ClCompile Include="HomeWork0331.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level0">
