@@ -26,6 +26,7 @@ int main()
     char Test2 = ChPtr[2];
     char Test3 = ChPtr[3];
 
+    int a = 0;
     // 바이트오더 (Byte Order)
     // 리틀 엔디안 (Little-endian)
     // a  a+1 a+2 a+3
