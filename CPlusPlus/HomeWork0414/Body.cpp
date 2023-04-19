@@ -8,14 +8,13 @@
 
 Body::Body()
 {
-	RenderChar = 'i';
+	RenderChar = L'бс';
 
 	int2 ScreenSize = ConsoleGameScreen::GetMainScreen().GetScreenSize();
 
 	int EmptyCount = Head::GetEmptyCount();
 	int Index = GameEngineRandom::MainRandom.RandomInt(0, EmptyCount - 1);
 	int Count = 0;
-
 	for (int y = 0; y < ScreenSize.Y; y++)
 	{
 		for (int x = 0; x < ScreenSize.X; x++)

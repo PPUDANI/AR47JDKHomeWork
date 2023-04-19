@@ -31,7 +31,8 @@ int main()
     {
         std::string a = "abc가나다123";
         std::wstring a1 = L"abc가나다123";
-        std::cout << a.size() << " " << a1.size();
+        std::cout << a.length() << " " << a1.length() << std::endl;
+        std::cout << a.size() << " " << a1.size() << std::endl;
     }
 
     
@@ -46,6 +47,46 @@ int main()
 
     }
 
-    
+    {
+        char Arr0[20] = "안녕하세요";
+        char Arr1[20] = "안녕하세요";
+
+        // 이 코드는 아래 코드와 같은 의미이다.
+        // 주소 비교를 하고있는 것이다.
+        // 그래서 한글자 한글자 씩 비교를 해주어야 한다.
+        if (Arr0 == Arr1)
+        {
+            int a = 0;
+        }
+
+        if (reinterpret_cast<char*>(Arr0) == reinterpret_cast<char*>(Arr1))
+        {
+            int a = 0;
+        }
+
+
+    }
+
+    {
+        std::string Text0 = "안녕하세요";
+        std::wstring Text1 = L"abc가나다123";
+
+        // "안녕" => "오늘"로 바꿔줘.
+        Text0.replace(0, 1, "오늘");
+
+        
+		// + 는 내부에서 append를 호출하고 있는 것.
+		// Text0.append()
+
+		// 사용해보서요
+		// Text0.find
+
+		// Text0.rfind
+
+		// Text0.find_last_not_of
+
+		// Text0.find_first_of
+
+    }
 }
 

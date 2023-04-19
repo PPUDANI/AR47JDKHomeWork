@@ -50,7 +50,7 @@ int main()
 		ConsoleObjectManager::ConsoleAllObjectUpdate();
 		ConsoleObjectManager::ConsoleAllObjectRender();
 		ConsoleObjectManager::ConsoleAllObjectRelease();
-		Sleep(200);
+		Sleep(300);
 	}
 
 	ConsoleObjectManager::ConsoleAllObjectDelete();

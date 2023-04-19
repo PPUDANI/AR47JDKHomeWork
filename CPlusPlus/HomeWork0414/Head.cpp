@@ -12,7 +12,7 @@ int Head::EmptyCount = 0;
 
 Head::Head()
 {
-	RenderChar = '@';
+	RenderChar = L'¢º';
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
 
 	int2 ScreenSize = ConsoleGameScreen::GetMainScreen().GetScreenSize();
@@ -44,12 +44,14 @@ void Head::BodyUpdate()
 		{
 			std::list<ConsoleGameObject*>::reverse_iterator PrevBody = std::next(ReverseBegin);
 			(*ReverseBegin)->SetPos((*PrevBody)->GetPos());
+			(*ReverseBegin)->SetRenderChar((*PrevBody)->GetRenderChar());
 		}
 	}
 
 	if ((*PrevReverseEnd)->IsAcquired())
 	{
 		(*PrevReverseEnd)->SetPos(PrevPos);
+		(*PrevReverseEnd)->SetRenderChar(GetRenderChar());
 	}
 	if (a == true)
 	{
@@ -66,7 +68,6 @@ void Head::IsBodyCheck()
 
 	std::list<ConsoleGameObject*>::iterator Begin = BodyGroup.begin();
 	std::list<ConsoleGameObject*>::iterator End = BodyGroup.end();
-
 	for (; Begin != End; ++Begin)
 	{
 		if (nullptr == (*Begin))
@@ -78,10 +79,8 @@ void Head::IsBodyCheck()
 			
 			if ( false == (*Begin)->IsAcquired())
 			{
-				
 				a = true;
 				(*Begin)->Acquire();
-				(*Begin)->SetRenderChar('O');
 			}
 			else
 			{
@@ -125,18 +124,22 @@ void Head::Update()
 	case 'a':
 	case 'A':
 		Dir = int2::Left;
+		SetRenderChar(L'¢¸');
 		break;
 	case 'd':
 	case 'D':
 		Dir = int2::Right;
+		SetRenderChar(L'¢º');
 		break;
 	case 'w':
 	case 'W':
 		Dir = int2::Up;
+		SetRenderChar(L'¡ã');
 		break;
 	case 's':
 	case 'S':
 		Dir = int2::Down;
+		SetRenderChar(L'¡å');
 		break;
 	case 'q':
 	case 'Q':

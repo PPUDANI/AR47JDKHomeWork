@@ -10,9 +10,14 @@ public:
 		Pos = _Value;
 	}
 
-	inline void SetRenderChar(const char _Value)
+	inline void SetRenderChar(const wchar_t _Value)
 	{
 		RenderChar = _Value;
+	}
+
+	inline wchar_t GetRenderChar()
+	{
+		return RenderChar;
 	}
 
 	inline int2 GetPos() const
@@ -53,7 +58,7 @@ public:
 
 protected:
 	int2 Pos;
-	char RenderChar = ' ';
+	wchar_t RenderChar = L'£À';
 	
 private:
 	bool UpdateValue = true;
