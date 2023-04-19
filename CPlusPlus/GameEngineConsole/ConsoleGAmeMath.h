@@ -30,6 +30,14 @@ public:
 		return X == _Other.X && Y == _Other.Y;
 	}
 
+	int2 operator-(const int2& _Other) const
+	{
+		int2 ReturnValue = *this;
+		ReturnValue.X -= _Other.X;
+		ReturnValue.Y -= _Other.Y;
+		return ReturnValue;
+	}
+
 	int2 operator+(const int2& _Other) const
 	{
 		int2 ReturnValue = *this;

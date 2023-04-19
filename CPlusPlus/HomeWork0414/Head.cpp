@@ -124,22 +124,22 @@ void Head::Update()
 	case 'a':
 	case 'A':
 		Dir = int2::Left;
-		SetRenderChar(L'¢¸');
+		RenderChar = L'¢¸';
 		break;
 	case 'd':
 	case 'D':
 		Dir = int2::Right;
-		SetRenderChar(L'¢º');
+		RenderChar = L'¢º';
 		break;
 	case 'w':
 	case 'W':
 		Dir = int2::Up;
-		SetRenderChar(L'¡ã');
+		RenderChar = L'¡ã';
 		break;
 	case 's':
 	case 'S':
 		Dir = int2::Down;
-		SetRenderChar(L'¡å');
+		RenderChar = L'¡å';
 		break;
 	case 'q':
 	case 'Q':
