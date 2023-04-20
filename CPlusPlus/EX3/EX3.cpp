@@ -2,7 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
-
+#include <vector>
 class int2
 {
 public:
@@ -36,9 +36,13 @@ public:
 
 int main()
 {
-    const int2 MapSize = { (const int)10, (const int)20 };
+    /*const int2 MapSize = { (const int)10, (const int)20 };
     ConsoleMap NewMap();
     ConsoleMap NewMap1;
-    Player NewPlayer;
+    Player NewPlayer;*/
+
+    std::vector<std::vector<int>> EmptyCheckArr(10, std::vector<int>(10, 0));
+
+    std::cout << EmptyCheckArr[3][4];
 }
 

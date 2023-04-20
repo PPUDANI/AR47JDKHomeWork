@@ -17,21 +17,12 @@ public:
 	Head& operator=(Head&& _Other) noexcept = delete;
 
 	static bool IsPlay;
-	static int GetEmptyCount()
-	{
-		return EmptyCount;
-	}
 
 protected:
 	void Update() override;
-	void BodyUpdate();
 	void IsBodyCheck();
-	void NewBodyCreateCheck();
 
 private:
-	static int EmptyCount;
 	int2 Dir = int2::Right;
-	int2 PrevPos;
-	bool a = false;
 };
 

@@ -21,13 +21,13 @@ int main()
 
 	GameEngineDebug::LeckCheck();
 
-	int2 ScreenSize = { 6, 4 };
+	int2 ScreenSize = { 4, 4 };
 	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
 
 	ConsoleObjectManager::CreateConsoleObject<Head>(ObjectOrder::Head);
 	ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
 
-
+	
 	// 1번째 
 	// 바디는 플레이어와 플레이어를 따라다니는 
 	// 바디가 존재하지 않는 공간에 만들 방법을 생각해 내야 합니다.
@@ -50,7 +50,7 @@ int main()
 		ConsoleObjectManager::ConsoleAllObjectUpdate();
 		ConsoleObjectManager::ConsoleAllObjectRender();
 		ConsoleObjectManager::ConsoleAllObjectRelease();
-		Sleep(300);
+		Sleep(400);
 	}
 
 	ConsoleObjectManager::ConsoleAllObjectDelete();

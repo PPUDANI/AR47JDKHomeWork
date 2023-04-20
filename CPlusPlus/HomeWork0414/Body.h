@@ -1,23 +1,13 @@
 #pragma once
 #include <GameEngineConsole/ConsoleGameObject.h>
+#include "Parts.h"
 
-class ConsoleGameScreen;
-class Body : public ConsoleGameObject
+class Body : public Parts
 {
 public:
 	// constructor destructor
 	Body();
 	~Body();
-
-	bool IsAcquired () override
-	{
-		return Acquired;
-	}
-
-	void Acquire () override
-	{
-		Acquired = true;
-	}
 
 	// delete Function
 	Body(const Body& _Other) = delete;
@@ -28,7 +18,7 @@ public:
 protected:
 
 private:
-	bool IsEmptySpace(const int _X, const int _Y);
-	bool Acquired = false;
+	std::vector<std::vector<int>> EmptyCheck();
+	static int UnitCount;
 };
 

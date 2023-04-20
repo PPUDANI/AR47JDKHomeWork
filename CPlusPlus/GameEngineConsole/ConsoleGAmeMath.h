@@ -17,7 +17,7 @@ public:
 public:
 	inline int2 Half() const
 	{
-		return { X / 4, Y / 2 };
+		return { X / 2, Y / 2 };
 	}
 
 	bool Check(const int2& _Other) const

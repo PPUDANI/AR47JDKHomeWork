@@ -11,11 +11,5 @@ void ConsoleGameObject::Render()
 	ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, RenderChar);
 }
 
-bool ConsoleGameObject::IsAcquired()
-{
-	return false;
-}
-
-void ConsoleGameObject::Acquire() {}
 
 void ConsoleGameObject::Update() {}

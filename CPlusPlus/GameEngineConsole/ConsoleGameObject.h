@@ -5,19 +5,9 @@
 class ConsoleGameObject
 {
 public:
-	inline void SetPos(const int2& _Value)
+	virtual inline void SetPos(const int2& _Value)
 	{
 		Pos = _Value;
-	}
-
-	inline void SetRenderChar(const wchar_t _Value)
-	{
-		RenderChar = _Value;
-	}
-
-	inline wchar_t GetRenderChar()
-	{
-		return RenderChar;
 	}
 
 	inline int2 GetPos() const
@@ -25,6 +15,10 @@ public:
 		return Pos;
 	}
 
+	void SetRenderchar(wchar_t _Value)
+	{
+		RenderChar = _Value;
+	}
 	bool IsDeath()
 	{
 		return DeathValue;
@@ -49,9 +43,6 @@ public:
 	{
 		UpdateValue = false;
 	}
-
-	virtual bool IsAcquired();
-	virtual void Acquire();
 
 	virtual void Update();
 	virtual void Render();
