@@ -20,8 +20,6 @@ public:
         MapNode* RightChild = nullptr;
     };
 
-
-
 };
 template<typename DataType0, typename DataType1>
 void TestValue(DataType0 _Data0, DataType1 _Data1)
