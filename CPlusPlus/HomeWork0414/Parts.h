@@ -25,7 +25,7 @@ public:
 		ConsoleGameObject::SetPos(_Value);
 	}
 
-	inline Parts* SetNext()
+	inline Parts* GetNext()
 	{
 		return Next;
 	}
@@ -35,34 +35,68 @@ public:
 		Next = _Next;
 	}
 
-	void SetCurVector()
+	void SetNextDir()
 	{
 		if (Next == nullptr)
 		{
-			CurVector = ;
+			return;
 		}
-
-		CurVector = Next->GetPos() - Pos;
-		return Next->SetCurVector();
+		int2 NextPos = Next->GetPos();
+		Next->Dir = Pos - NextPos;
 	}
+
 	int2 GetPrevPos()
 	{
 		return PrevPos;
 	}
+	
+	void SetRenderChar()
+	{
+		if (int2::Up == Dir)
+		{
+			RenderChar = L'¡ã';
+		}
+		else if (int2::Down == Dir)
+		{
+			RenderChar = L'¡å';
+		}
+		else if (int2::Left == Dir)
+		{
+			RenderChar = L'¢¸';
+		}
+		else if (int2::Right == Dir)
+		{
+			RenderChar = L'¢º';
+		}
+	}
 
 	void NextMove();
 
+	inline bool IsAcquired()
+	{
+		return Acquired;
+	}
+
+	inline void Acquire()
+	{
+		Acquired = true;
+	}
+
+
 protected:
 	void Update() override;
+	int2 Dir = int2::Right;
+
 	
+
 private:
 	static int2 ScreenSize;
 	static std::vector<std::vector<int>> EmptyCheckArr;
 
 	int2 PrevPos = int2::Zero;
-	int2 CurVector = int2::Zero;
+	
 	Parts* Next = nullptr;
 	Parts* Prev = nullptr;
 	
-	
+	bool Acquired = false;
 };

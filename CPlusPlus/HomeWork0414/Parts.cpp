@@ -18,6 +18,7 @@ Parts::~Parts()
 {
 }
 
+
 void Parts::Update()
 {
 	ConsoleGameObject::Update();
@@ -39,8 +40,15 @@ void Parts::NextMove()
 	{
 		return;
 	}
+
 	Parts::EmptyCheckArr[GetPos().Y][GetPos().X] = 1;
 	Parts::EmptyCheckArr[GetPrevPos().Y][GetPrevPos().X] = 0;
+
+	
 	Next->SetPos(PrevPos);
+	SetNextDir();
+	Next->SetRenderChar();
+	
+
 	return Next->NextMove();
 }

@@ -50,8 +50,15 @@ int main()
 		ConsoleObjectManager::ConsoleAllObjectUpdate();
 		ConsoleObjectManager::ConsoleAllObjectRender();
 		ConsoleObjectManager::ConsoleAllObjectRelease();
-		Sleep(400);
-	}
 
+		if (true == Body::GetMaxUnitCount())
+		{
+			std::cout << "\n   You Win" << std::endl;
+			break;
+		}
+
+		Sleep(300);
+	}
+	
 	ConsoleObjectManager::ConsoleAllObjectDelete();
 }

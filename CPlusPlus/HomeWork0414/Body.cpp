@@ -10,13 +10,13 @@ int Body::UnitCount = 0;
 
 Body::Body()
 {
-	RenderChar = L'¢Â';
 	++UnitCount;
 	int2 ScreenSize = ConsoleGameScreen::GetMainScreen().GetScreenSize();
 	
 	std::vector<std::vector<int>> EmptyCheckArr(EmptyCheck());
 
 	int EmptySpaceNum = (ScreenSize.X * ScreenSize.Y) - UnitCount;
+
 	int IndexNum = GameEngineRandom::MainRandom.RandomInt(1, EmptySpaceNum);
 
 	int Count = IndexNum;

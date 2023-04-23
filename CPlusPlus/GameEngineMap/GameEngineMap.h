@@ -65,53 +65,6 @@ public:
 
 		}
 
-		void Detach()
-		{
-			MapNode* DetachParent = Parent;
-			MapNode* DetachLeftChild = LeftChild;
-			MapNode* DetachRightChild = RightChild;
-
-			if (nullptr != DetachParent && this == DetachParent->LeftChild)
-			{
-				DetachParent->LeftChild = DetachRightChild;
-				if (nullptr != DetachRightChild)
-				{
-					DetachRightChild->Parent = DetachParent;
-				}
-			}
-			else if (nullptr != DetachParent && this == DetachParent->RightChild)
-			{
-				DetachParent->RightChild = DetachLeftChild;
-				if (nullptr != DetachLeftChild)
-				{
-					DetachLeftChild->Parent = DetachParent;
-				}
-			}
-		}
-
-		// 지워지기 직전에 해야할일
-		void Release()
-		{
-			if (nullptr == Parent)
-			{
-				return;
-			}
-
-			if (this == Parent->LeftChild)
-			{
-				Parent->LeftChild = nullptr;
-				return;
-			}
-
-			if (this == Parent->RightChild)
-			{
-				Parent->RightChild = nullptr;
-				return;
-			}
-
-		}
-
-
 		MapNode* OverParentNode()
 		{
 			MapNode* ParentNode = Parent;
@@ -131,16 +84,6 @@ public:
 
 		MapNode* PrevNode()
 		{
-			if (nullptr != LeftChild)
-			{
-				return LeftChild->MaxNode();
-			}
-
-			if (nullptr != Parent)
-			{
-				return OverParentNode();
-			}
-
 			return nullptr;
 		}
 
@@ -229,6 +172,48 @@ public:
 			}
 
 			return this;
+		}
+
+		void FirstOrder()
+		{
+			std::cout << Pair.first << std::endl;
+			if (nullptr != LeftChild)
+			{
+				LeftChild->FirstOrder();
+			}
+			if (nullptr != RightChild)
+			{
+				RightChild->FirstOrder();
+			}
+		}
+
+		void MidOrder()
+		{
+			if (nullptr != LeftChild)
+			{
+				LeftChild->MidOrder();
+			}
+			std::cout << Pair.first << std::endl;
+			if (nullptr != RightChild)
+			{
+				RightChild->MidOrder();
+			}
+
+		}
+
+		void LastOrder()
+		{
+			if (nullptr != LeftChild)
+			{
+				LeftChild->LastOrder();
+			}
+			if (nullptr != RightChild)
+			{
+				RightChild->LastOrder();
+			}
+
+			std::cout << Pair.first << std::endl;
+
 		}
 	};
 
@@ -329,57 +314,81 @@ public:
 		MapNode* LeftChild = CurNode->LeftChild;
 
 		MapNode* ChangeNode = nullptr;
+		MapNode* ChangeNodeParent = nullptr;
 		MapNode* NextNode = CurNode->NextNode();
 
 		if (true == CurNode->IsLeaf())
 		{
-			CurNode->Release();
-			delete CurNode;
-			CurNode = nullptr;
+			ParentNode->ChangeChild(CurNode, nullptr);
+			if (nullptr != CurNode)
+			{
+				delete CurNode;
+				CurNode = nullptr;
+			}
 			return NextNode;
 		}
 
-		if (nullptr != RightChild)
-		{
-			ChangeNode = RightChild->MinNode();
-			ChangeNode->Detach();
 
-			if (nullptr != ParentNode)
-			{
-				ParentNode->ChangeChild(CurNode, ChangeNode);
-				ChangeNode->LeftChild = CurNode->LeftChild;
-				if (nullptr != ChangeNode->LeftChild)
-				{
-					ChangeNode->LeftChild->Parent = ChangeNode;
-				}
-				ChangeNode->RightChild = CurNode->RightChild;
-				if (nullptr != ChangeNode->RightChild)
-				{
-					ChangeNode->RightChild->Parent = ChangeNode;
-				}
-			}
-			return ChangeNode;
-		}
-		else if (nullptr != LeftChild)
+		// 교체될 노드는 절대로 양쪽을 모두 가진 노드일수 없다.
+		MapNode* ChangeChild = nullptr;
+		MapNode* ChangeParent = nullptr;
+
+		if (nullptr != LeftChild)
 		{
 			ChangeNode = LeftChild->MaxNode();
-			ChangeNode->Detach();
+			ChangeChild = ChangeNode->LeftChild;
+			ChangeParent = ChangeNode->Parent;
+		}
+		else if (nullptr != RightChild)
+		{
+			ChangeNode = RightChild->MinNode();
+			ChangeChild = ChangeNode->RightChild;
+			ChangeParent = ChangeNode->Parent;
+		}
 
-			if (nullptr != ParentNode)
-			{
-				ParentNode->ChangeChild(CurNode, ChangeNode);
-				ChangeNode->LeftChild = CurNode->LeftChild;
-				if (nullptr != ChangeNode->LeftChild)
-				{
-					ChangeNode->LeftChild->Parent = ChangeNode;
-				}
-				ChangeNode->RightChild = CurNode->RightChild;
-				if (nullptr != ChangeNode->RightChild)
-				{
-					ChangeNode->RightChild->Parent = ChangeNode;
-				}
-			}
-			return ChangeNode;
+		if (nullptr == ChangeNode)
+		{
+			MsgBoxAssert("말도안돼");
+			return nullptr;
+		}
+
+		// 루트노드일 경우를 대비해서
+		// 체인지 노드의 뒷정리를 하는 기간
+		if (nullptr != ChangeParent)
+		{
+			ChangeParent->ChangeChild(ChangeNode, ChangeChild);
+		}
+
+
+		// 교체할 노드와 지워질 노드의 정보 교체를 한다.
+
+		if (nullptr != ParentNode)
+		{
+			ParentNode->ChangeChild(CurNode, ChangeNode);
+		}
+		else
+		{
+			ChangeNode->Parent = nullptr;
+			Root = ChangeNode;
+			// RootNode 
+		}
+
+
+		ChangeNode->LeftChild = LeftChild;
+		if (nullptr != LeftChild)
+		{
+			LeftChild->Parent = ChangeNode;
+		}
+		ChangeNode->RightChild = RightChild;
+		if (nullptr != RightChild)
+		{
+			RightChild->Parent = ChangeNode;
+		}
+
+		if (nullptr != CurNode)
+		{
+			delete CurNode;
+			CurNode = nullptr;
 		}
 
 		return NextNode;
@@ -429,6 +438,22 @@ public:
 		return true;
 	}
 
+	void FirstOrder()
+	{
+		Root->FirstOrder();
+	}
+
+	void MidOrder()
+	{
+		Root->MidOrder();
+	}
+
+	void LastOrder()
+	{
+		Root->LastOrder();
+	}
+
+private:
 	MapNode* Root = nullptr;
 };
 
