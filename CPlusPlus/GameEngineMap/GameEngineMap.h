@@ -488,6 +488,7 @@ public:
 	void DeleteNode()
 	{
 		Root->DeleteNode();
+		Root = nullptr;
 	}
 private:
 	MapNode* Root = nullptr;
