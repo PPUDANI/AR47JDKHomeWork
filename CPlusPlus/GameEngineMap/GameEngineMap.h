@@ -29,8 +29,10 @@ class GameEngineMap
 public:
 	~GameEngineMap()
 	{
-		DeleteNode();
+		Root->DeleteNode();
+		Root = nullptr;
 	}
+
 	class MapNode
 	{
 	public:
@@ -240,11 +242,12 @@ public:
 			{
 				Parent->LeftChild = nullptr;
 			}
-			if (this == Parent->LeftChild)
+			else if (this == Parent->RightChild)
 			{
 				Parent->RightChild = nullptr;
 			}
 
+			Parent = nullptr;
 			delete this;
 		}
 	};
@@ -485,11 +488,6 @@ public:
 		Root->LastOrder();
 	}
 
-	void DeleteNode()
-	{
-		Root->DeleteNode();
-		Root = nullptr;
-	}
 private:
 	MapNode* Root = nullptr;
 	int NodeCount = 0;
