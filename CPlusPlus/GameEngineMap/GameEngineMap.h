@@ -27,7 +27,10 @@ public:
 class GameEngineMap
 {
 public:
-
+	~GameEngineMap()
+	{
+		DeleteNode();
+	}
 	class MapNode
 	{
 	public:
@@ -213,7 +216,36 @@ public:
 			}
 
 			std::cout << Pair.first << std::endl;
+		}
 
+
+		void DeleteNode()
+		{
+			if (nullptr != LeftChild)
+			{
+				LeftChild->DeleteNode();
+			}
+			if (nullptr != RightChild)
+			{
+				RightChild->DeleteNode();
+			}
+
+			if (Parent == nullptr)
+			{
+				delete this;
+				return;
+			}
+
+			if (this == Parent->LeftChild)
+			{
+				Parent->LeftChild = nullptr;
+			}
+			if (this == Parent->LeftChild)
+			{
+				Parent->RightChild = nullptr;
+			}
+
+			delete this;
 		}
 	};
 
@@ -428,7 +460,7 @@ public:
 
 		MapNode* NewNode = new MapNode();
 		NewNode->Pair = _Pair;
-
+		++NodeCount;
 		if (false == Root->insert(NewNode))
 		{
 			delete NewNode;
@@ -453,7 +485,12 @@ public:
 		Root->LastOrder();
 	}
 
+	void DeleteNode()
+	{
+		Root->DeleteNode();
+	}
 private:
 	MapNode* Root = nullptr;
+	int NodeCount = 0;
 };
 

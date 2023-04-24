@@ -157,7 +157,6 @@ public:
 private:
 
 
-
     // 더미노트
     ListNode* StartNode = new ListNode();
     ListNode* EndNode = new ListNode();
