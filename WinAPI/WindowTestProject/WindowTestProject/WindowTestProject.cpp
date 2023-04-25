@@ -45,12 +45,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 윈도우가 내 프로그램
 
     // 기본 메시지 루프입니다:
     // 윈도우가 켜지있는 동안 계속 프로그램이 켜져있게 만들려고 while문으로 막은 것이다.
-    // GEtMessage는 윈도우에 무슨 일이 생길 때만 리턴되는 함수이다.
+    // GetMessage는 윈도우에 무슨 일이 생길 때만 리턴되는 함수이다.
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
-            TranslateMessage(&msg);
+            TranslateMessage(&msg); 
             DispatchMessage(&msg);
         }
     }
@@ -196,11 +196,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
 
             // 윈도우 화면에 무언가를 그리기 위한 권한.
-            HDC hdc = BeginPaint(hWnd, &ps); 
+            HDC hdc = BeginPaint(hWnd, &ps);
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-
-
             Rectangle(hdc, 100, 100, 10, 10);
+
+
             EndPaint(hWnd, &ps);
         }
         break;
