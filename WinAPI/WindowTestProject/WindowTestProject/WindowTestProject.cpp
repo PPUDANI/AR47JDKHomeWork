@@ -44,6 +44,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 윈도우가 내 프로그램
     MSG msg;
 
     // 기본 메시지 루프입니다:
+    // 윈도우가 켜지있는 동안 계속 프로그램이 켜져있게 만들려고 while문으로 막은 것이다.
+    // GEtMessage는 윈도우에 무슨 일이 생길 때만 리턴되는 함수이다.
     while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -69,18 +71,39 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
+    // 크기 바꾸면 다시 그려라
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
+
+
     wcex.lpfnWndProc    = WndProc;
+
+    // 0이면 기본설정
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
+
+    // 이 윈도우 클래스를 등록하려는 프로그램이 나야.
     wcex.hInstance      = hInstance;
+
+    // 윈도우 기본 아이콘
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINDOWTESTPROJECT));
+
+    // 커서를 정한다(의미가 없다)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+
+    // 윈도우 색깔(내 배경으로 덮을거기 때문에 의미가 없다)
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
+
+    //윈도우창 작업표시줄
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WINDOWTESTPROJECT);
+
+    // 이 형식의 이름은 AAAAAA입니다.
+    // 앞으로 제가 윈도우를 만들 때 
     wcex.lpszClassName  = szWindowClass;
+
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
+    //윈도우 형식을등록하는 함수
+    // 메뉴를 사용하지 않아.
     return RegisterClassExW(&wcex);
 }
 
@@ -98,17 +121,38 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   // 윈도우를 만드는 함수
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+   HWND hWnd1 = CreateWindowW(
+       szWindowClass, 
+       L"가나다abc123",
+       WS_OVERLAPPEDWINDOW,
+       100, // 시작점 위치 X
+       100, // 시작점 위치 Y
+       300, // 크기 X
+       300,  // 크기 Y
+       nullptr, // 몰라요
+       nullptr, // 몰라요 
+       hInstance, // 누가 요청했는가.
+       nullptr);
 
    if (!hWnd)
    {
       return FALSE;
    }
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+   // API 구조는 개발자가 따로 기능을 만드는것이 아닌 Window가 개발자가 원하는 핸들을 제공하여
+   // 그 핸들을 용도에 맞게 사용는 것이다.
 
+   // 윈도우 출력
+   ShowWindow(hWnd, nCmdShow);
+   ShowWindow(hWnd1, nCmdShow);
+
+   // 윈도우 갱신
+   UpdateWindow(hWnd);
+   UpdateWindow(hWnd1);
    return TRUE;
 }
 
@@ -124,6 +168,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    // wParam, lParam 윈도우 크기
+    // hWnd: 윈도우를 
+    // 
     switch (message)
     {
     case WM_COMMAND:
@@ -139,19 +186,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DestroyWindow(hWnd);
                 break;
             default:
+                // 기본적인 처리방식
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
         break;
-    case WM_PAINT:
+    case WM_PAINT: // 화면에 그린다.
         {
             PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
+
+            // 윈도우 화면에 무언가를 그리기 위한 권한.
+            HDC hdc = BeginPaint(hWnd, &ps); 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+
+
+            Rectangle(hdc, 100, 100, 10, 10);
             EndPaint(hWnd, &ps);
         }
         break;
-    case WM_DESTROY:
+    case WM_DESTROY: // GetMessage() 함수에서 0을 리턴하게 만든다.
         PostQuitMessage(0);
         break;
     default:
