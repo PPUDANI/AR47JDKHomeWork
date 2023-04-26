@@ -39,6 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 윈도우가 내 프로그램
         return FALSE;
     }
 
+    // 단축키를 사용하기위한 핸들
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINDOWTESTPROJECT));
 
     MSG msg;
@@ -48,6 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 윈도우가 내 프로그램
     // GetMessage는 윈도우에 무슨 일이 생길 때만 리턴되는 함수이다.
     while (GetMessage(&msg, nullptr, 0, 0))
     {
+        // 단축키를 누른 메세지인지 체크하는것
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
@@ -134,13 +136,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        CW_USEDEFAULT, // 시작점 위치 X
        0, // 시작점 위치 Y
        CW_USEDEFAULT, // 크기 X
-       1000,  // 크기 Y
+       0,  // 크기 Y
        nullptr, // 몰라요
        nullptr, // 몰라요 
-       hInstance, // 누가 요청했는가.
+       hInstance, // 윈도우 제작을 누가 요청했는가(보안)
        nullptr);
 
-   if (!hWnd)
+   if (!hWnd || !hWnd1)
    {
       return FALSE;
    }
@@ -168,6 +170,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+
+// CALLBACK(__stdcall) : 함수가 끝아면  stack영역에서 메모리를 지워주는 것.
+// __cdecl : 일반적인 전역함수를 만들면 암묵적 변환이 됨.
+// __stdcall : 윈도유 함수에서 많이 사용함.
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     // message : 윈도우에서 벌어진 일의 종류 (윈도우가 선택됬다, 윈도우 크기가 바뀌었다 등등)
