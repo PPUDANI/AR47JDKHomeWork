@@ -9,7 +9,7 @@
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
-WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+WCHAR szWindowClass[MAX_LOADSTRING] = L"Window_Test";            // 기본 창 클래스 이름입니다.
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -50,7 +50,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, // 윈도우가 내 프로그램
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
-            TranslateMessage(&msg); 
+            TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
     }
@@ -71,38 +71,40 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
-    // 크기 바꾸면 다시 그려라
+    // 크기 바꾸면 다시 그리는 설정
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
 
+    // 윈도우에서 무슨일이 생기면 너대신 그 행동을 해줄게
+    wcex.lpfnWndProc    = WndProc; // 함수포인터 (UI에서 자주 사용되는것이 함수포인터, 콘솔에서 _getch()와 비슷한 느낌)
 
-    wcex.lpfnWndProc    = WndProc;
-
-    // 0이면 기본설정
+    // 기본설정(잘은 모름)
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
 
-    // 이 윈도우 클래스를 등록하려는 프로그램이 나야.
+    // 이 윈도우 클래스를 등록하려는 프로그램이 누구인지 설정 (※ 중요 ※)
     wcex.hInstance      = hInstance;
 
     // 윈도우 기본 아이콘
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINDOWTESTPROJECT));
 
-    // 커서를 정한다(의미가 없다)
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
+    // 마우스 커서를 정한다 (기본 마우스 커서 디자인을 쓰는 게임은 없다.)
+    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW); // ex) IDC_ARROW : 화살표, IDC_CROSS : 십자 , etc.
 
-    // 윈도우 색깔(내 배경으로 덮을거기 때문에 의미가 없다)
+    // 윈도우 색깔 (게임 배경으로 덮을거기 때문에 의미가 없다.)
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
 
-    //윈도우창 작업표시줄
+    //윈도우창 맨 위 작업표시줄
     wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WINDOWTESTPROJECT);
 
-    // 이 형식의 이름은 AAAAAA입니다.
-    // 앞으로 제가 윈도우를 만들 때 
+    // 윈도우를 만들 때 선택할 수 있는 윈도우 형식 등록 (※ 중요 ※)
+    // 현재 형식 이름은 "Window_Test"
+    // 이유 -> 12LINE 전역변수 : szWindowClass = L"Window_Test"
     wcex.lpszClassName  = szWindowClass;
 
+    // 
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
-    //윈도우 형식을등록하는 함수
+    // 윈도우 형식을 최종적으로 등록하는 함수
     // 메뉴를 사용하지 않아.
     return RegisterClassExW(&wcex);
 }
@@ -126,13 +128,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    HWND hWnd1 = CreateWindowW(
-       szWindowClass, 
-       L"가나다abc123",
-       WS_OVERLAPPEDWINDOW,
-       100, // 시작점 위치 X
-       100, // 시작점 위치 Y
-       300, // 크기 X
-       300,  // 크기 Y
+       szWindowClass,  // "WindowTest" 형식으로 윈도우를 만든다.
+       L"가나다abc123", // 타이틀 이름
+       WS_OVERLAPPEDWINDOW, // 윈도우 스타일
+       CW_USEDEFAULT, // 시작점 위치 X
+       0, // 시작점 위치 Y
+       CW_USEDEFAULT, // 크기 X
+       1000,  // 크기 Y
        nullptr, // 몰라요
        nullptr, // 몰라요 
        hInstance, // 누가 요청했는가.
@@ -168,12 +170,29 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    // message : 윈도우에서 벌어진 일의 종류 (윈도우가 선택됬다, 윈도우 크기가 바뀌었다 등등)
     // wParam, lParam 윈도우 크기
     // hWnd: 윈도우를 
-    // 
+
+    // 윈도우의 여러 메세지를 처리한다.
     switch (message)
     {
-    case WM_COMMAND:
+    case WM_CREATE: // 윈도우가 생성될 때
+    {
+        int a = 0;
+        break;
+    }
+    case WM_SETFOCUS: // 윈도우가 생성될 때
+    {
+        int a = 0;
+        break;
+    }
+    case WM_KILLFOCUS: // 윈도우가 생성될 때
+    {
+        int a = 0;
+        break;
+    }
+    case WM_COMMAND: // 커맨드가 들어올 때
         {
             int wmId = LOWORD(wParam);
             // 메뉴 선택을 구문 분석합니다:
@@ -186,12 +205,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 DestroyWindow(hWnd);
                 break;
             default:
-                // 기본적인 처리방식
+                // 커맨드가 너무 많기 때문이 이외의 메세지는 기본적인 방식으로 처리하는것이 아래코드.
+                // 안해놓으면 위험함
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
         break;
-    case WM_PAINT: // 화면에 그린다.
+    case WM_PAINT: // 화면에 그릴 때
         {
             PAINTSTRUCT ps;
 
@@ -205,10 +225,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
-    case WM_DESTROY: // GetMessage() 함수에서 0을 리턴하게 만든다.
-        PostQuitMessage(0);
+    case WM_DESTROY: // 윈도우 파괴할 때
+        PostQuitMessage(0); // GetMessage() 함수에서 0을 리턴하게 만든다.
         break;
     default:
+        // 메세지가 너무 많기 때문이 이외의 메세지는 기본적인 방식으로 처리하는것이 아래코드
+        // 안해놓으면 위험함
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
