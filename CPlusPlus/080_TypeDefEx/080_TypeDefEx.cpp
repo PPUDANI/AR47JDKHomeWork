@@ -1,7 +1,7 @@
 ﻿
 #include <iostream>
 
-typedef int MYINT, *MYTEST;
+typedef int MYINT, * MYTEST;
 
 // c++은 C의 문법을 거의 다 사용할 수 있다.
 // C++은 C를 포함한다? -> 완 전 개소리이다.
@@ -20,7 +20,7 @@ typedef struct MyStruct0 Player0;
 struct MyStruct1
 {
     int a;
-} Player1, Test, *PPlayer1;
+} Player1, Test, * PPlayer1;
 
 int main()
 {
@@ -29,7 +29,7 @@ int main()
 
     // C 는 struct를 무조건 붙여야 한다.
     struct MyStruct0 NewStruct;
-    
+
     // 이를 없애는 방법은 typedef를 사용할 수 있다.
     Player0 NewStruct0;
 
