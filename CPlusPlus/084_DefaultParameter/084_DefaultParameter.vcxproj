@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3fc87c36-9cc4-430f-aaef-f12c50dacfc8}</ProjectGuid>
-    <RootNamespace>My083TemplateEx</RootNamespace>
+    <ProjectGuid>{1884151a-e43b-44ce-a081-ac867e34e1bf}</ProjectGuid>
+    <RootNamespace>My084DefaultParameter</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,17 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="083_TemplateEx.cpp" />
-    <ClCompile Include="Temp.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Temp.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClCompile Include="084_DefaultParameter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

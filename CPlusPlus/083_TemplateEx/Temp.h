@@ -1,4 +1,7 @@
 #pragma once
+
+
+template<typename DataType>
 class Temp
 {
 public:
@@ -12,6 +15,6 @@ public:
 protected:
 
 private:
-
+	void function(DataType _Data);
 };
 
