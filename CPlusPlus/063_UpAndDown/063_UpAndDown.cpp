@@ -18,7 +18,7 @@ private:
 
 };
 
-class Player : FightUnit
+class Player : public FightUnit
 {
 public:
     int GetAtt() override
@@ -49,7 +49,6 @@ int main()
     Player* Ptr0 = &NewPlayer0;
     FightUnit* Ptr1 = Ptr0;
 
-    FightUnit* Ptr1 = & 
     Fight(NewPlayer0, NewPlayer1);
 
 }
