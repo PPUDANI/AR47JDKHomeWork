@@ -47,7 +47,9 @@ int main()
     Player NewPlayer1;
 
     Player* Ptr0 = &NewPlayer0;
-    FightUnit* Ptr1 = &Ptr0;
+    FightUnit* Ptr1 = Ptr0;
+
+    FightUnit* Ptr1 = & 
     Fight(NewPlayer0, NewPlayer1);
 
 }
