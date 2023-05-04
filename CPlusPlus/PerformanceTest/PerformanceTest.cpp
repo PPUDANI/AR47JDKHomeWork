@@ -1,14 +1,7 @@
 ﻿
 #include <iostream>
 #include <windows.h>
-class A 
-{
-    int a = 0;
-};
-class B : public A
-{
-    int b = 0;
-};
+
 int main()
 {
     LARGE_INTEGER Count;
@@ -23,11 +16,6 @@ int main()
     {
         std::cout << i;
         system("cls");
-        
-        {
-            B* PtrB = new B();
-            A* Test = dynamic_cast<A*>(PtrB);
-        }
     }
 
     QueryPerformanceCounter(&End);
