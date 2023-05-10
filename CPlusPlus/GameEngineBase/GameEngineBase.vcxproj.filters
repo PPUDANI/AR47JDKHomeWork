@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="GameEngineDebug.cpp" />
-    <ClCompile Include="GameEngineRamdom.cpp" />
+    <ClCompile Include="GameEngineRandom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngineDebug.h" />
-    <ClInclude Include="GameEngineRamdom.h" />
+    <ClInclude Include="GameEngineRandom.h" />
   </ItemGroup>
 </Project>
